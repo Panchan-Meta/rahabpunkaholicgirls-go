@@ -233,9 +233,23 @@
           let link_domain = 'zealy.io';
           try{ link_domain = new URL(link_url).hostname; }catch(e){}
           let blankWin = null;
-          if (intercept) { ev.preventDefault(); try{ blankWin = window.open('about:blank','_blank','noopener'); }catch(e){} }
+          const useSelfNav = INAPP;
+          if (intercept) {
+            ev.preventDefault();
+            if (!useSelfNav) {
+              try{ blankWin = window.open('about:blank','_blank','noopener'); }catch(e){}
+            }
+          }
           const navigate = () => {
             if (navigate._done) return; navigate._done = true;
+            if (useSelfNav) {
+              try{
+                location.href = link_url;
+              }catch(_e){
+                try{ window.top.location.href = link_url; }catch(_){ }
+              }
+              return;
+            }
             try{ if (blankWin && !blankWin.closed) { blankWin.location.href = link_url; } else { window.open(link_url,'_blank','noopener'); } }
             catch(e){ try{ location.href = link_url; }catch(_){ } }
           };
@@ -389,6 +403,8 @@
     .step{ background:#101018; border:1px solid #262636; border-radius:12px; padding:12px 14px; color:#c9cbe0; font-size:14px; }
     .quick-steps-side .steps{ grid-template-columns:1fr; gap:10px; margin-top:6px; }
     @media (max-width:800px){ .steps{ grid-template-columns:1fr; } }
+    .ig-browser-note{ margin-top:10px; font-size:12.5px; color:#9fa3b8; line-height:1.55; }
+    @media (max-width:420px){ .ig-browser-note{ font-size:12px; } }
 
     .perks{ list-style:none; padding:0; margin:12px 0 0; display:grid; gap:10px; }
     .perk{ display:flex; gap:12px; align-items:flex-start; background:#101018; border:1px solid #262636; border-radius:12px; padding:12px 14px; color:#d1d3e6; }
@@ -470,8 +486,8 @@
       <p class="lead" data-i18n="subtitle"> See a quick guide, then jump to PGirlsChain on Zealy. Sign in with email, Discord, or wallet. </p>
       <div class="cta">
         <a id="cta-hero" data-pos="hero" data-lead-cta class="btn btn-primary cta-stack cta-zealy" target="_blank" rel="noopener" href="https://zealy.io/cw/pgirlschain?utm_source=rahabpunkaholicgirls.com&utm_medium=go_zealy_page&utm_campaign=zealy_onboarding" aria-label="Open Zealy">
-          <span class="cta-main" data-i18n="ctaMain">Start fan moments (free, email OK)</span>
-          <small class="cta-sub" data-i18n="ctaSub">No wallet needed</small>
+          <span class="cta-main" data-i18n="ctaMain">Join PGirlsChain on Zealy</span>
+          <small class="cta-sub" data-i18n="ctaSub">Claim your first 10 XP now (no wallet needed, email OK)</small>
         </a>
         <a class="btn btn-secondary" href="#howto-visual" data-i18n="watchHowto">See how it works</a>
         <a class="btn btn-secondary" href="#board" data-track="board_link" data-i18n="goBoard">Go to board</a>
@@ -486,12 +502,14 @@
             <img src="https://rahabpunkaholicgirls.com/wp-content/uploads/2025/05/1720282773097-1.jpg" alt="Visual 16:9" loading="lazy" />
           </div>
           <section class="card quick-steps-side" id="quick-steps">
-            <h3 class="section-title" data-i18n="quickStepsTitle">Quick Steps</h3>
+            <h3 class="section-title" data-i18n="quickStepsTitle">Step Guide</h3>
             <div class="steps">
-              <div class="step" data-i18n="s1">1) Sign in to Zealy (email / Discord / wallet)</div>
-              <div class="step" data-i18n="s2">2) Finish the three onboarding fan moments</div>
-              <div class="step" data-i18n="s3">3) Receive your Discord role and perks</div>
+              <div class="step" data-i18n="s1">Step 1: Tap “Connect to Zealy” (email / Discord / wallet OK)</div>
+              <div class="step" data-i18n="s2">Step 2: Create your username</div>
+              <div class="step" data-i18n="s3">Step 3: Tap “Join PGirlsChain” again (expected behavior)</div>
+              <div class="step" data-i18n="s4">Step 4: Complete “L0: Claim your first 10 XP”</div>
             </div>
+            <p class="ig-browser-note" data-i18n="igBrowserNote">If you can’t log in inside Instagram, tap ••• in the top right and choose “Open in browser.”</p>
           </section>
         </div>
 
@@ -569,8 +587,8 @@
       <h2 class="section-title" data-i18n="finalTitle">Proceed to the Zealy campaign</h2>
       <p style="margin-top:-4px;color:#b9b9c9" data-i18n="finalDesc"> It opens in a new tab. If nothing happens, click the button again. </p>
       <a id="cta-final" data-pos="final" data-lead-cta class="btn btn-primary cta-stack cta-zealy" style="font-size:18px;padding:16px 22px" target="_blank" rel="noopener" href="https://zealy.io/cw/pgirlschain?utm_source=rahabpunkaholicgirls.com&utm_medium=go_zealy_page&utm_campaign=zealy_onboarding" aria-label="Open Zealy">
-        <span class="cta-main" data-i18n="ctaMain">Start fan moments (free, email OK)</span>
-        <small class="cta-sub" data-i18n="ctaSub">No wallet needed</small>
+        <span class="cta-main" data-i18n="ctaMain">Join PGirlsChain on Zealy</span>
+        <small class="cta-sub" data-i18n="ctaSub">Claim your first 10 XP now (no wallet needed, email OK)</small>
       </a>
     </section>
 
@@ -585,8 +603,8 @@
       <div class="msg" data-i18n="finalDesc">It opens in a new tab. If nothing happens, click the button again.</div>
       <div class="sticky-actions">
         <a id="cta-sticky" data-pos="sticky" data-lead-cta class="btn btn-primary cta-stack cta-zealy" target="_blank" rel="noopener" href="https://zealy.io/cw/pgirlschain?utm_source=rahabpunkaholicgirls.com&utm_medium=go_zealy_page&utm_campaign=zealy_onboarding" aria-label="Open Zealy">
-          <span class="cta-main" data-i18n="ctaMain">Start fan moments (free, email OK)</span>
-          <small class="cta-sub" data-i18n="ctaSub">No wallet needed</small>
+          <span class="cta-main" data-i18n="ctaMain">Join PGirlsChain on Zealy</span>
+          <small class="cta-sub" data-i18n="ctaSub">Claim your first 10 XP now (no wallet needed, email OK)</small>
         </a>
         <a class="btn btn-secondary" href="#howto-visual" data-i18n="watchHowto">See how it works</a>
       </div>
@@ -597,11 +615,225 @@
   <script>
   (function(){
     /* ===== i18n dictionary (EN/JA/IT/FR) ===== */
-    const STRINGS = { /* --- 省略なしで元の辞書をそのまま維持（あなたの元コード通り） --- */
-      en:{ title:"Post a caption for XP → today’s board",subtitle:"See a quick guide, then jump to PGirlsChain on Zealy. Sign in with email, Discord, or wallet.",watchHowto:"See how it works",note:"Clicks from this page are tracked for analytics.",quickStepsTitle:"Quick Steps",s1:"1) Sign in to Zealy (email / Discord / wallet)",s2:"2) Finish the three onboarding fan moments",s3:"3) Receive your Discord role and perks",perksTitle:"Perks",perksNote:"Leaderboard rankings are determined by the XP you earn from completing Zealy fan moments.",perk1:"1st: RIRUKA finished jacket (single-edition).",perk2:"2nd–3rd: Annual Premium Live Pass (all artists included).",perk3:"4th–20th: 0.2 PGirls (approx. $14).",finalTitle:"Proceed to the Zealy campaign",finalDesc:"It opens in a new tab. If nothing happens, click the button again.",backHome:"← Back to rahabpunkaholicgirls.com",ctaMain:"Start fan moments (free, email OK)",ctaSub:"No wallet needed",musicSaleTitle:"Punk-only Music fan moments Sale",musicSaleLead:"Qualifying via the Punk fan moments on Zealy unlocks special pricing for the track “The gray pledge” (not part of the prize).",musicSaleCTA:"Qualify on Zealy",pgExplain:"PGirls is a community-only digital point (not cash/crypto; non-transferable). Redeem on PGirlsChain for designated music/art perks.",pgLearn:"Learn more",execTag:"Action",loopTag:"Loop",execLine:"Post a caption for XP → today’s board",loopLine:"Daily fan moments → Friday leaderboard & praise → mini collabs",pinNote:"Check-in is the pinned comment under the clip — no scroll.",captionsTitle:"This week’s captions (about 200 characters each)",cap1:"Rahab Punkaholic Girls is a community that makes your fan moments visible across music and digital art. The afterglow of a show, a lyric that hit you, a color in the artwork—cut your feelings into ~200 chars and post to today’s board. XP opens new doors. Use #PGirlsChain #FanMoment. Join with email—no wallet needed. Your words can spark someone.",cap2:"The PGirlsChain story starts by honoring nameless first steps. Share a small liking and lines connect to distant friends; songs and drawings gain depth. This week, tell us the temperature of gray you felt in “The gray pledge”—metaphor or concrete. Your angle lights the next creation. Head to the board.",cap3:"Fan moments aren’t finished pieces—they’re sketches. The pre-show thrum, a midnight looped phrase, the instant you caught your fave’s smile—save those fragments in words and turn them into XP. On Friday we review the board with praise. One line from you is enough. Add it to today’s board.",boardTitle:"Today’s board",boardDesc:"Captions posted this week will surface here. Updated continuously.",boardTodayTitle:"Today’s post",boardPost1:"Today I looped “The gray pledge” on the way home. The city felt softer, like the track sanded down the edges of my day. PGirls keeps imperfect feelings intact. Drop one line on the board. #PGirlsChain #FanMoment",goBoard:"Go to board", igVerified:"is verified on Instagram", contact:"Contact:", contactEmail:"Email", contactDM:"Instagram DM", or:"or", brandSubtitle:"Go to Zealy", visualLabel:"The gray pledge Visual", howtoLabel:"How to play Zealy", videoFallback:"Sorry, your browser does not support embedded videos.", igOpen:"Open in Instagram", igThumbAlt:"IG → Zealy guide thumbnail", visualAria:"Visual (16:9)", howtoAria:"Instagram post (9:16)" },
-      /* JA / IT / FR も元のまま全て残す（長文のため省略） */
-      ja:{ /* ... */ }, it:{ /* ... */ }, fr:{ /* ... */ }
-    };
+    const STRINGS = {
+      "en": {
+            "title": "Post a caption for XP → today’s board",
+            "subtitle": "See a quick guide, then jump to PGirlsChain on Zealy. Sign in with email, Discord, or wallet.",
+            "watchHowto": "See how it works",
+            "note": "Clicks from this page are tracked for analytics.",
+            "igBrowserNote": "If you can’t log in inside Instagram, tap ••• in the top right and choose “Open in browser.”",
+            "quickStepsTitle": "Step Guide",
+            "s1": "Step 1: Tap “Connect to Zealy” (email / Discord / wallet OK)",
+            "s2": "Step 2: Create your username",
+            "s3": "Step 3: Tap “Join PGirlsChain” again (expected behavior)",
+            "s4": "Step 4: Complete “L0: Claim your first 10 XP”",
+            "perksTitle": "Perks",
+            "perksNote": "Leaderboard rankings are determined by the XP you earn from completing Zealy fan moments.",
+            "perk1": "1st: RIRUKA finished jacket (single-edition).",
+            "perk2": "2nd–3rd: Annual Premium Live Pass (all artists included).",
+            "perk3": "4th–20th: 0.2 PGirls (approx. $14).",
+            "finalTitle": "Proceed to the Zealy campaign",
+            "finalDesc": "It opens in a new tab. If nothing happens, click the button again.",
+            "backHome": "← Back to rahabpunkaholicgirls.com",
+            "ctaMain": "Join PGirlsChain on Zealy",
+            "ctaSub": "Claim your first 10 XP now (no wallet needed, email OK)",
+            "musicSaleTitle": "Punk-only Music fan moments Sale",
+            "musicSaleLead": "Qualifying via the Punk fan moments on Zealy unlocks special pricing for the track “The gray pledge” (not part of the prize).",
+            "musicSaleCTA": "Qualify on Zealy",
+            "pgExplain": "PGirls is a community-only digital point (not cash/crypto; non-transferable). Redeem on PGirlsChain for designated music/art perks.",
+            "pgLearn": "Learn more",
+            "execTag": "Action",
+            "loopTag": "Loop",
+            "execLine": "Post a caption for XP → today’s board",
+            "loopLine": "Daily fan moments → Friday leaderboard & praise → mini collabs",
+            "pinNote": "Check-in is the pinned comment under the clip — no scroll.",
+            "captionsTitle": "This week’s captions (about 200 characters each)",
+            "cap1": "Rahab Punkaholic Girls is a community that makes your fan moments visible across music and digital art. The afterglow of a show, a lyric that hit you, a color in the artwork—cut your feelings into ~200 chars and post to today’s board. XP opens new doors. Use #PGirlsChain #FanMoment. Join with email—no wallet needed. Your words can spark someone.",
+            "cap2": "The PGirlsChain story starts by honoring nameless first steps. Share a small liking and lines connect to distant friends; songs and drawings gain depth. This week, tell us the temperature of gray you felt in “The gray pledge”—metaphor or concrete. Your angle lights the next creation. Head to the board.",
+            "cap3": "Fan moments aren’t finished pieces—they’re sketches. The pre-show thrum, a midnight looped phrase, the instant you caught your fave’s smile—save those fragments in words and turn them into XP. On Friday we review the board with praise. One line from you is enough. Add it to today’s board.",
+            "boardTitle": "Today’s board",
+            "boardDesc": "Captions posted this week will surface here. Updated continuously.",
+            "boardTodayTitle": "Today’s post",
+            "boardPost1": "Today I looped “The gray pledge” on the way home. The city felt softer, like the track sanded down the edges of my day. PGirls keeps imperfect feelings intact. Drop one line on the board. #PGirlsChain #FanMoment",
+            "goBoard": "Go to board",
+            "igVerified": "is verified on Instagram",
+            "contact": "Contact:",
+            "contactEmail": "Email",
+            "contactDM": "Instagram DM",
+            "or": "or",
+            "brandSubtitle": "Go to Zealy",
+            "visualLabel": "The gray pledge Visual",
+            "howtoLabel": "How to play Zealy",
+            "videoFallback": "Sorry, your browser does not support embedded videos.",
+            "igOpen": "Open in Instagram",
+            "igThumbAlt": "IG → Zealy guide thumbnail",
+            "visualAria": "Visual (16:9)",
+            "howtoAria": "Instagram post (9:16)"
+      },
+      "ja": {
+            "title": "キャプション投稿でXP、今日のボードへ",
+            "subtitle": "ガイドをチェックして、ZealyのPGirlsChainへジャンプ。メール、Discord、ウォレットでサインインできます。",
+            "watchHowto": "遊び方を見る",
+            "note": "このページからのクリックは分析のために計測されます。",
+            "igBrowserNote": "Instagram内でログインできない場合は、右上の ••• →「ブラウザで開く」をタップしてください。",
+            "quickStepsTitle": "手順ガイド",
+            "s1": "Step 1: 「Connect to Zealy」をタップ（メール / Discord / ウォレットOK）",
+            "s2": "Step 2: ユーザー名を作成",
+            "s3": "Step 3: もう一度「Join PGirlsChain」をタップ（仕様です）",
+            "s4": "Step 4: 「L0: Claim your first 10 XP」を実行",
+            "perksTitle": "特典",
+            "perksNote": "リーダーボードの順位は、Zealyのファン・モーメントで獲得したXPで決まります。",
+            "perk1": "1位: RIRUKA仕上げジャケット（1点もの）",
+            "perk2": "2〜3位: 年間プレミアム・ライブパス（全アーティスト対象）",
+            "perk3": "4〜20位: 0.2 PGirls（約14ドル相当）",
+            "finalTitle": "Zealyキャンペーンへ進む",
+            "finalDesc": "新しいタブで開きます。開かない場合はもう一度ボタンを押してください。",
+            "backHome": "← rahabpunkaholicgirls.com に戻る",
+            "ctaMain": "ZealyでPGirlsChainに参加",
+            "ctaSub": "はじめの10XPを今すぐ獲得（ウォレット不要・メールOK）",
+            "musicSaleTitle": "Punk限定 Music fan moments セール",
+            "musicSaleLead": "ZealyのPunkファン・モーメントを達成すると、「The gray pledge」の特別価格が解放されます（賞品とは別枠）。",
+            "musicSaleCTA": "Zealyで条件達成",
+            "pgExplain": "PGirlsはコミュニティ専用のデジタルポイントです（現金/暗号ではなく譲渡不可）。PGirlsChainで指定の音楽・アート特典に交換できます。",
+            "pgLearn": "詳しく見る",
+            "execTag": "Action",
+            "loopTag": "Loop",
+            "execLine": "キャプション投稿でXP、今日のボードへ",
+            "loopLine": "日々のファン・モーメント → 金曜のリーダーボード & 賞賛 → ミニコラボ",
+            "pinNote": "チェックインは動画下の固定コメントです。スクロール不要。",
+            "captionsTitle": "今週のキャプション（各200文字ほど）",
+            "cap1": "Rahab Punkaholic Girlsは、音楽とデジタルアートを横断して“推しの瞬間”を可視化するコミュニティ。ライブの余韻、歌詞に刺さった一行、アートの色彩…感じたことを200字で切り取って今日のボードへ。XPが次の扉を開きます。ハッシュタグは #PGirlsChain #FanMoment。メールで参加OK、ウォレット不要。あなたの言葉が誰かのきっかけになる。",
+            "cap2": "PGirlsChainの物語は、無名の一歩を称えることから始まる。小さな“好き”を共有すると、遠くの仲間と線がつながり、曲と絵が立体になる。今週は「The gray pledge」で感じたグレーの温度を教えて。比喩でも具体でも。あなたの視点が次の制作を照らす。ボードへ進もう。",
+            "cap3": "ファン・モーメントは完成品じゃなくて途中のスケッチ。ライブ前の高鳴り、深夜にループしたフレーズ、推しの笑顔を見つけた瞬間――その断片を言葉で残してXPに。金曜には称賛とともにボードを振り返ります。あなたの一行を待っています。今日のボードへ。",
+            "boardTitle": "今日のボード",
+            "boardDesc": "今週投稿されたキャプションがここに表示されます。随時更新。",
+            "boardTodayTitle": "今日の投稿",
+            "boardPost1": "帰り道に「The gray pledge」をループ。街の輪郭が削れたみたいに柔らかくなった。PGirlsは未完成な感情をそのまま保存してくれる。ボードに一行残して。 #PGirlsChain #FanMoment",
+            "goBoard": "ボードを見る",
+            "igVerified": "はInstagramで認証済み",
+            "contact": "お問い合わせ:",
+            "contactEmail": "メール",
+            "contactDM": "Instagram DM",
+            "or": "または",
+            "brandSubtitle": "Zealyへ移動",
+            "visualLabel": "The gray pledge ビジュアル",
+            "howtoLabel": "Zealyの遊び方",
+            "videoFallback": "お使いのブラウザは動画の埋め込みに対応していません。",
+            "igOpen": "Instagramで開く",
+            "igThumbAlt": "IG → Zealyガイドのサムネイル",
+            "visualAria": "ビジュアル（16:9）",
+            "howtoAria": "Instagram投稿（9:16）"
+      },
+      "it": {
+            "title": "Pubblica una caption per XP → bacheca di oggi",
+            "subtitle": "Guarda la guida rapida e vai alla campagna PGirlsChain su Zealy. Accedi con email, Discord o wallet.",
+            "watchHowto": "Scopri come funziona",
+            "note": "I clic da questa pagina vengono tracciati per l’analisi.",
+            "igBrowserNote": "Se non riesci ad accedere dentro Instagram, tocca ••• in alto a destra e scegli “Apri nel browser”.",
+            "quickStepsTitle": "Guida ai passaggi",
+            "s1": "Step 1: Tocca “Connect to Zealy” (email / Discord / wallet OK)",
+            "s2": "Step 2: Crea il tuo nome utente",
+            "s3": "Step 3: Tocca di nuovo “Join PGirlsChain” (è previsto così)",
+            "s4": "Step 4: Completa “L0: Claim your first 10 XP”",
+            "perksTitle": "Premi",
+            "perksNote": "La classifica è determinata dagli XP guadagnati completando i fan moment su Zealy.",
+            "perk1": "1º: Giacca rifinita di RIRUKA (pezzo unico).",
+            "perk2": "2º–3º: Pass Annual Premium Live (tutti gli artisti inclusi).",
+            "perk3": "4º–20º: 0.2 PGirls (circa 14 USD).",
+            "finalTitle": "Vai alla campagna Zealy",
+            "finalDesc": "Si apre in una nuova scheda. Se non succede nulla, tocca di nuovo il pulsante.",
+            "backHome": "← Torna su rahabpunkaholicgirls.com",
+            "ctaMain": "Partecipa a PGirlsChain su Zealy",
+            "ctaSub": "Ottieni subito i primi 10 XP (niente wallet, email OK)",
+            "musicSaleTitle": "Promo fan moments Punk-only Music",
+            "musicSaleLead": "Completando i fan moment Punk su Zealy sblocchi il prezzo speciale per il brano “The gray pledge” (non fa parte dei premi).",
+            "musicSaleCTA": "Qualificati su Zealy",
+            "pgExplain": "PGirls è un punto digitale riservato alla community (non è denaro/crypto; non trasferibile). Riscattalo su PGirlsChain per i perk musicali/artistici designati.",
+            "pgLearn": "Scopri di più",
+            "execTag": "Action",
+            "loopTag": "Loop",
+            "execLine": "Pubblica una caption per XP → bacheca di oggi",
+            "loopLine": "Fan moment quotidiani → classifica del venerdì & shoutout → mini collaborazioni",
+            "pinNote": "Il check-in è nel commento fissato sotto il video — niente scroll.",
+            "captionsTitle": "Caption della settimana (circa 200 caratteri ciascuna)",
+            "cap1": "Rahab Punkaholic Girls è una community che rende visibili i tuoi fan moment tra musica e arte digitale. La scia di un live, un verso che ti ha colpito, un colore nell’artwork: comprimi le tue sensazioni in ~200 caratteri e pubblicale sulla bacheca di oggi. Gli XP aprono nuove porte. Usa #PGirlsChain #FanMoment. Puoi iscriverti con l’email, senza wallet. Le tue parole possono accendere qualcuno.",
+            "cap2": "La storia di PGirlsChain parte celebrando i primi passi senza nome. Condividi un piccolo like e i fili si collegano a persone lontane; canzoni e illustrazioni acquistano spessore. Questa settimana raccontaci la temperatura di grigio che hai percepito in “The gray pledge” — metafora o qualcosa di concreto. Il tuo punto di vista illumina la prossima creazione. Vai alla bacheca.",
+            "cap3": "I fan moment non sono pezzi finiti: sono schizzi. Il brivido prima di un live, una frase ascoltata a mezzanotte in loop, l’istante in cui hai colto il sorriso della tua fave: conserva quei frammenti con le parole e trasformali in XP. Il venerdì rivediamo la bacheca con elogio. Basta una tua riga. Aggiungila alla bacheca di oggi.",
+            "boardTitle": "Bacheca di oggi",
+            "boardDesc": "Le caption pubblicate questa settimana compaiono qui. Aggiornamento continuo.",
+            "boardTodayTitle": "Post di oggi",
+            "boardPost1": "Oggi ho messo in loop “The gray pledge” tornando a casa. La città sembrava più morbida, come se il brano avesse levigato gli spigoli della giornata. PGirls conserva intatte le sensazioni imperfette. Lascia una riga sulla bacheca. #PGirlsChain #FanMoment",
+            "goBoard": "Vai alla bacheca",
+            "igVerified": "è verificato su Instagram",
+            "contact": "Contatto:",
+            "contactEmail": "Email",
+            "contactDM": "DM Instagram",
+            "or": "oppure",
+            "brandSubtitle": "Vai su Zealy",
+            "visualLabel": "Visual di “The gray pledge”",
+            "howtoLabel": "Come usare Zealy",
+            "videoFallback": "Il tuo browser non supporta i video incorporati.",
+            "igOpen": "Apri su Instagram",
+            "igThumbAlt": "Thumbnail guida IG → Zealy",
+            "visualAria": "Visual (16:9)",
+            "howtoAria": "Post Instagram (9:16)"
+      },
+      "fr": {
+            "title": "Publiez une légende pour gagner des XP → tableau du jour",
+            "subtitle": "Consultez le guide rapide puis rejoignez la campagne PGirlsChain sur Zealy. Connectez-vous par e-mail, Discord ou wallet.",
+            "watchHowto": "Voir comment ça marche",
+            "note": "Les clics depuis cette page sont suivis pour l’analyse.",
+            "igBrowserNote": "Si vous ne pouvez pas vous connecter dans Instagram, touchez ••• en haut à droite puis « Ouvrir dans le navigateur ».",
+            "quickStepsTitle": "Guide des étapes",
+            "s1": "Étape 1 : Touchez « Connect to Zealy » (e-mail / Discord / wallet acceptés)",
+            "s2": "Étape 2 : Créez votre nom d’utilisateur",
+            "s3": "Étape 3 : Touchez encore « Join PGirlsChain » (comportement normal)",
+            "s4": "Étape 4 : Exécutez « L0: Claim your first 10 XP »",
+            "perksTitle": "Récompenses",
+            "perksNote": "Le classement dépend des XP obtenus en réalisant les fan moments sur Zealy.",
+            "perk1": "1er : Veste finale de RIRUKA (pièce unique).",
+            "perk2": "2e–3e : Pass Premium Live annuel (tous artistes inclus).",
+            "perk3": "4e–20e : 0,2 PGirls (environ 14 $).",
+            "finalTitle": "Accéder à la campagne Zealy",
+            "finalDesc": "S’ouvre dans un nouvel onglet. Si rien ne se passe, touchez le bouton à nouveau.",
+            "backHome": "← Retour sur rahabpunkaholicgirls.com",
+            "ctaMain": "Rejoindre PGirlsChain sur Zealy",
+            "ctaSub": "Obtenez vos 10 XP initiaux maintenant (sans wallet, e-mail accepté)",
+            "musicSaleTitle": "Promo fan moments Punk-only Music",
+            "musicSaleLead": "En validant les fan moments Punk sur Zealy, vous débloquez un prix spécial pour « The gray pledge » (hors lot).",
+            "musicSaleCTA": "Se qualifier sur Zealy",
+            "pgExplain": "PGirls est un point numérique réservé à la communauté (ni argent ni crypto ; non transférable). Échangez-le sur PGirlsChain contre les perks musique/art dédiés.",
+            "pgLearn": "En savoir plus",
+            "execTag": "Action",
+            "loopTag": "Loop",
+            "execLine": "Publiez une légende pour gagner des XP → tableau du jour",
+            "loopLine": "Fan moments quotidiens → classement du vendredi & éloges → mini-collaborations",
+            "pinNote": "Le check-in est dans le commentaire épinglé sous la vidéo — pas besoin de défiler.",
+            "captionsTitle": "Légendes de la semaine (≈200 caractères chacune)",
+            "cap1": "Rahab Punkaholic Girls est une communauté qui rend vos fan moments visibles à travers la musique et l’art numérique. L’après-coup d’un concert, une parole qui vous a touché, une couleur dans l’artwork — condensez vos sensations en ~200 caractères et postez-les sur le tableau du jour. Les XP ouvrent de nouvelles portes. Utilisez #PGirlsChain #FanMoment. Inscrivez-vous par e-mail — aucun wallet requis. Vos mots peuvent inspirer quelqu’un.",
+            "cap2": "L’histoire de PGirlsChain commence en honorant les premiers pas anonymes. Partagez un petit coup de cœur et des lignes relieront des amis lointains ; les chansons et dessins gagnent en profondeur. Cette semaine, racontez-nous la nuance de gris ressentie dans « The gray pledge » — métaphore ou réalité. Votre angle éclaire la prochaine création. Direction le tableau.",
+            "cap3": "Les fan moments ne sont pas des œuvres achevées — ce sont des croquis. Le frisson d’avant concert, une phrase bouclée à minuit, l’instant où vous avez surpris le sourire de votre fav — gardez ces fragments en mots et transformez-les en XP. Le vendredi, nous passons le tableau en revue avec des éloges. Une seule ligne de vous suffit. Ajoutez-la au tableau du jour.",
+            "boardTitle": "Tableau du jour",
+            "boardDesc": "Les légendes publiées cette semaine apparaissent ici. Mise à jour continue.",
+            "boardTodayTitle": "Publication du jour",
+            "boardPost1": "Aujourd’hui j’ai mis « The gray pledge » en boucle sur le chemin du retour. La ville paraissait plus douce, comme si le morceau avait poli les arêtes de ma journée. PGirls conserve intacts les sentiments imparfaits. Déposez une ligne sur le tableau. #PGirlsChain #FanMoment",
+            "goBoard": "Aller au tableau",
+            "igVerified": "est vérifié sur Instagram",
+            "contact": "Contact :",
+            "contactEmail": "E-mail",
+            "contactDM": "DM Instagram",
+            "or": "ou",
+            "brandSubtitle": "Aller sur Zealy",
+            "visualLabel": "Visuel « The gray pledge »",
+            "howtoLabel": "Comment jouer à Zealy",
+            "videoFallback": "Votre navigateur ne prend pas en charge les vidéos intégrées.",
+            "igOpen": "Ouvrir sur Instagram",
+            "igThumbAlt": "Miniature du guide IG → Zealy",
+            "visualAria": "Visuel (16:9)",
+            "howtoAria": "Publication Instagram (9:16)"
+      }
+};
+
 
     const ALLOWED = ['en','ja','it','fr'];
     const q = new URLSearchParams(location.search);
@@ -750,7 +982,7 @@
 (function(){
   /* ===== i18n dictionary (EN/JA/IT/FR) ===== */
   const STRINGS = {
-    en:{ title:"Post a caption for XP → today’s board",subtitle:"See a quick guide, then jump to PGirlsChain on Zealy. Sign in with email, Discord, or wallet.",watchHowto:"See how it works",note:"Clicks from this page are tracked for analytics.",quickStepsTitle:"Quick Steps",s1:"1) Sign in to Zealy (email / Discord / wallet)",s2:"2) Finish the three onboarding fan moments",s3:"3) Receive your Discord role and perks",perksTitle:"Perks",perksNote:"Leaderboard rankings are determined by the XP you earn from completing Zealy fan moments.",perk1:"1st: RIRUKA finished jacket (single-edition).",perk2:"2nd–3rd: Annual Premium Live Pass (all artists included).",perk3:"4th–20th: 0.2 PGirls (approx. $14).",finalTitle:"Proceed to the Zealy campaign",finalDesc:"It opens in a new tab. If nothing happens, click the button again.",backHome:"← Back to rahabpunkaholicgirls.com",ctaMain:"Start fan moments (free, email OK)",ctaSub:"No wallet needed",musicSaleTitle:"Punk-only Music fan moments Sale",musicSaleLead:"Qualifying via the Punk fan moments on Zealy unlocks special pricing for the track “The gray pledge” (not part of the prize).",musicSaleCTA:"Qualify on Zealy",pgExplain:"PGirls is a community-only digital point (not cash/crypto; non-transferable). Redeem on PGirlsChain for designated music/art perks.",pgLearn:"Learn more",execTag:"Action",loopTag:"Loop",execLine:"Post a caption for XP → today’s board",loopLine:"Daily fan moments → Friday leaderboard & praise → mini collabs",pinNote:"Check-in is the pinned comment under the clip — no scroll.",captionsTitle:"This week’s captions (about 200 characters each)",cap1:"Rahab Punkaholic Girls is a community that makes your fan moments visible across music and digital art. The afterglow of a show, a lyric that hit you, a color in the artwork—cut your feelings into ~200 chars and post to today’s board. XP opens new doors. Use #PGirlsChain #FanMoment. Join with email—no wallet needed. Your words can spark someone.",cap2:"The PGirlsChain story starts by honoring nameless first steps. Share a small liking and lines connect to distant friends; songs and drawings gain depth. This week, tell us the temperature of gray you felt in “The gray pledge”—metaphor or concrete. Your angle lights the next creation. Head to the board.",cap3:"Fan moments aren’t finished pieces—they’re sketches. The pre-show thrum, a midnight looped phrase, the instant you caught your fave’s smile—save those fragments in words and turn them into XP. On Friday we review the board with praise. One line from you is enough. Add it to today’s board.",boardTitle:"Today’s board",boardDesc:"Captions posted this week will surface here. Updated continuously.",boardTodayTitle:"Today’s post",boardPost1:"Today I looped “The gray pledge” on the way home. The city felt softer, like the track sanded down the edges of my day. PGirls keeps imperfect feelings intact. Drop one line on the board. #PGirlsChain #FanMoment",goBoard:"Go to board", igVerified:"is verified on Instagram", contact:"Contact:", contactEmail:"Email", contactDM:"Instagram DM", or:"or", brandSubtitle:"Go to Zealy", visualLabel:"The gray pledge Visual", howtoLabel:"How to play Zealy", videoFallback:"Sorry, your browser does not support embedded videos.", igOpen:"Open in Instagram", igThumbAlt:"IG → Zealy guide thumbnail", visualAria:"Visual (16:9)", howtoAria:"Instagram post (9:16)" },
+    en:{ title:"Post a caption for XP → today’s board",subtitle:"See a quick guide, then jump to PGirlsChain on Zealy. Sign in with email, Discord, or wallet.",watchHowto:"See how it works",note:"Clicks from this page are tracked for analytics.",igBrowserNote:"If you can’t log in inside Instagram, tap ••• in the top right and choose “Open in browser.”",quickStepsTitle:"Step Guide",s1:"Step 1: Tap “Connect to Zealy” (email / Discord / wallet OK)",s2:"Step 2: Create your username",s3:"Step 3: Tap “Join PGirlsChain” again (expected behavior)",s4:"Step 4: Complete “L0: Claim your first 10 XP”",perksTitle:"Perks",perksNote:"Leaderboard rankings are determined by the XP you earn from completing Zealy fan moments.",perk1:"1st: RIRUKA finished jacket (single-edition).",perk2:"2nd–3rd: Annual Premium Live Pass (all artists included).",perk3:"4th–20th: 0.2 PGirls (approx. $14).",finalTitle:"Proceed to the Zealy campaign",finalDesc:"It opens in a new tab. If nothing happens, click the button again.",backHome:"← Back to rahabpunkaholicgirls.com",ctaMain:"Join PGirlsChain on Zealy",ctaSub:"Claim your first 10 XP now (no wallet needed, email OK)",musicSaleTitle:"Punk-only Music fan moments Sale",musicSaleLead:"Qualifying via the Punk fan moments on Zealy unlocks special pricing for the track “The gray pledge” (not part of the prize).",musicSaleCTA:"Qualify on Zealy",pgExplain:"PGirls is a community-only digital point (not cash/crypto; non-transferable). Redeem on PGirlsChain for designated music/art perks.",pgLearn:"Learn more",execTag:"Action",loopTag:"Loop",execLine:"Post a caption for XP → today’s board",loopLine:"Daily fan moments → Friday leaderboard & praise → mini collabs",pinNote:"Check-in is the pinned comment under the clip — no scroll.",captionsTitle:"This week’s captions (about 200 characters each)",cap1:"Rahab Punkaholic Girls is a community that makes your fan moments visible across music and digital art. The afterglow of a show, a lyric that hit you, a color in the artwork—cut your feelings into ~200 chars and post to today’s board. XP opens new doors. Use #PGirlsChain #FanMoment. Join with email—no wallet needed. Your words can spark someone.",cap2:"The PGirlsChain story starts by honoring nameless first steps. Share a small liking and lines connect to distant friends; songs and drawings gain depth. This week, tell us the temperature of gray you felt in “The gray pledge”—metaphor or concrete. Your angle lights the next creation. Head to the board.",cap3:"Fan moments aren’t finished pieces—they’re sketches. The pre-show thrum, a midnight looped phrase, the instant you caught your fave’s smile—save those fragments in words and turn them into XP. On Friday we review the board with praise. One line from you is enough. Add it to today’s board.",boardTitle:"Today’s board",boardDesc:"Captions posted this week will surface here. Updated continuously.",boardTodayTitle:"Today’s post",boardPost1:"Today I looped “The gray pledge” on the way home. The city felt softer, like the track sanded down the edges of my day. PGirls keeps imperfect feelings intact. Drop one line on the board. #PGirlsChain #FanMoment",goBoard:"Go to board", igVerified:"is verified on Instagram", contact:"Contact:", contactEmail:"Email", contactDM:"Instagram DM", or:"or", brandSubtitle:"Go to Zealy", visualLabel:"The gray pledge Visual", howtoLabel:"How to play Zealy", videoFallback:"Sorry, your browser does not support embedded videos.", igOpen:"Open in Instagram", igThumbAlt:"IG → Zealy guide thumbnail", visualAria:"Visual (16:9)", howtoAria:"Instagram post (9:16)" },
 
     ja:{ title:"キャプション投稿でXP、今日のボードへ",subtitle:"手順をかんたんに確認してから、ZealyのPGirlsChainキャンペーンへ。ログインはメール/Discord/ウォレットのいずれかでOK。",watchHowto:"操作の流れを見る",note:"このページ経由のクリックは計測されます。",quickStepsTitle:"かんたん手順",s1:"1) Zealyにサインイン（メール / Discord / ウォレット）",s2:"2) オンボーディング3つのファン・モーメントを完了",s3:"3) Discordロールと特典を受け取り",perksTitle:"特典",perksNote:"順位は、Zealyのファン・モーメントで獲得したXP（経験値）によって決まります。",perk1:"1位：RIRUKA完成版ジャケット（単体エディション）。",perk2:"2〜3位：年間Premium Live Pass（すべてのアーティスト対象）",perk3:"4〜20位：0.2 PGirls（約14ドル相当）",finalTitle:"Zealyのキャンペーンへ進む",finalDesc:"別タブで開きます。うまく開かない場合は下のボタンをもう一度クリックしてください。",backHome:"← サイトへ戻る",ctaMain:"ファン・モーメントを始める（無料・メールOK）",ctaSub:"ウォレット不要",musicSaleTitle:"Punk限定ファン・モーメント販売",musicSaleLead:"ZealyでPunkファン・モーメントをクリアした方は、楽曲「The gray pledge」を優待価格で購入できます（景品には含まれません）。",musicSaleCTA:"Zealyで参加条件をクリア",pgExplain:"PGirlsはコミュニティ専用のデジタルポイントです（現金・暗号資産ではなく、譲渡不可）。PGirlsChain上で指定の音楽・アート特典に利用できます。",pgLearn:"詳しく",execTag:"実行",loopTag:"ループ",execLine:"キャプション投稿でXP、今日のボードへ",loopLine:"毎日ファン・モーメント → 金曜リーダーボード発表＋称賛 → 小コラボ",pinNote:"チェックインはクリップ直下の固定コメント。スクロール不要。",captionsTitle:"今週のキャプション（各200字程度）",cap1:"Rahab Punkaholic Girlsは、音楽とデジタルアートを横断して“推しの瞬間”を可視化するコミュニティ。ライブの余韻、歌詞に刺さった一行、アートの色彩…あなたの感じたことを200字で切り取って、今日のボードに載せよう。XPで次の扉が開きます。ハッシュタグは #PGirlsChain #FanMoment を推奨。初心者でもメールで参加OK、ウォレット不要。あなたの言葉が誰かのきっかけになる。",cap2:"PGirlsChainの物語は、無名の一歩を称えることから始まる。小さな“好き”を共有すると、遠くの仲間と線がつながり、曲と絵が立体になる。今週は「The gray pledge」で感じたグレーの温度を教えて。比喩でも、具体でも。あなたの視点が次の制作を照らす。リンクからボードへ。",cap3:"ファン・モーメントは完成品じゃなくて、途中のスケッチ。ライブ前の高鳴り、深夜にループしたフレーズ、推しの笑顔を見つけた瞬間——その断片を言葉で残してXPに。金曜には称賛とともにボードを振り返ります。あなたの一行を待っています。さあ、今日のボードへ。",boardTitle:"今日のボード",boardDesc:"今週投稿されたキャプションがここに反映されます。随時更新。",boardTodayTitle:"今日の投稿",boardPost1:"今日は『The gray pledge』を通勤帰りにループ。車窓の街が少しやさしく見えた。完璧じゃない感情をそのまま抱きしめる勇気。PGirlsはそんな揺らぎを残せる場所。あなたの一行が重なれば、ボードは小さな合唱になる。#PGirlsChain #FanMoment",goBoard:"ボードへ移動", igVerified:"は認証済みアカウントです", contact:"お問い合わせ:", contactEmail:"メール", contactDM:"インスタDM", or:"または", brandSubtitle:"Zealyへ", visualLabel:"The gray pledge ビジュアル", howtoLabel:"Zealyの遊び方", videoFallback:"お使いのブラウザは動画の埋め込みに対応していません。", igOpen:"Instagramで開く", igThumbAlt:"IG → Zealy ガイドのサムネイル", visualAria:"ビジュアル（16:9）", howtoAria:"Instagram投稿（9:16）" },
 
