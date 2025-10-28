@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Redirecting to OpenSea…</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-66GTK7C6VR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-66GTK7C6VR', { send_page_view: true });
+
+  // 例: /go/opensea/?url=<encoded>
+  function getParam(k){ return new URL(location.href).searchParams.get(k); }
+  function go(){
+    var url = getParam('url');
+    var label = getParam('label') || 'opensea_redirect';
+    if(!url){ document.getElementById('msg').textContent='Invalid link.'; return; }
+
+    // クリック/遷移イベントを送信
+    try{
+      gtag('event','click_outbound',{
+        event_category:'engagement',
+        event_label:label,
+        section_id:'go-opensea',
+        link_url:url
+      });
+    }catch(e){}
+
+    // 300ms後に遷移（ビーコン送信時間の確保）
+    setTimeout(function(){ location.replace(url); }, 300);
+  }
+  window.addEventListener('load', go);
+</script>
+<style>body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;padding:24px}</style>
+</head>
+<body>
+  <p id="msg">Redirecting to OpenSea…</p>
+  <noscript><p>Please enable JavaScript to continue.</p></noscript>
+</body>
+</html>

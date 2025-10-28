@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Opening Discord…</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex,nofollow" />
+  <link rel="canonical" href="/go/discord" />
+
+  <!-- Social / Open Graph -->
+  <meta property="og:title" content="Join us on Discord" />
+  <meta property="og:description" content="Auto-opening the Discord app. If it doesn’t open, this page falls back to the web invite." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/go/discord" />
+
+  <!-- ===== EARLY: app open (iOS/Android/Desktop) + GA queue ===== -->
+  <script>
+    (function(){
+      // GA queue (safe before GA loads)
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = window.gtag || function(){ dataLayer.push(arguments); };
+
+      // Invite mapping by channel
+      var INVITES = {
+        nav:  'WgM7nEndx6',
+        hero: 'WgM7nEndx6',
+        live: '4ZPePDs3Rs',
+        default: '4ZPePDs3Rs'
+      };
+
+      var qs   = new URLSearchParams(location.search);
+      var ch   = (qs.get('ch') || 'default').toLowerCase();          // nav | hero | live
+      var over = (qs.get('invite') || '').replace(/[^A-Za-z0-9]/g,'');
+      var code = over || (INVITES[ch] || INVITES.default);
+
+      // Links
+      var appIOS     = 'discord://-/invite/' + code;                  // iOS/macOS app scheme
+      var appDesktop = 'discord://-/invite/' + code;                  // Windows/macOS desktop
+      var appAndroid = 'intent://-/invite/' + code +                  // Android Chrome Intent
+                       '#Intent;scheme=discord;package=com.discord;'+
+                       'S.browser_fallback_url=' + encodeURIComponent('https://discord.com/invite/' + code) + ';end';
+      var webInvite  = 'https://discord.com/invite/' + code;
+
+      // Expose for fallback UI
+      window.__DISCORD_CODE__ = code;
+      window.__DISCORD_WEB__  = webInvite;
+
+      // UA helpers
+      var ua = navigator.userAgent || '';
+      var isIOS     = /iPhone|iPad|iPod/i.test(ua);
+      var isAndroid = /Android/i.test(ua);
+      var isMac     = /Macintosh/i.test(ua) && !isIOS;
+      var isWin     = /Windows/i.test(ua);
+      var inApp     = /Instagram|FBAN|FBAV|Line|Messenger|Twitter|WeChat|TikTok/i.test(ua);
+
+      // report arrival
+      gtag('event','discord_redirect',{ channel: ch, invite_code: code, page_referrer: document.referrer || '(none)' });
+
+      var opened = false;
+      function markOpened(){
+        if (opened) return;
+        opened = true;
+        gtag('event','discord_deeplink_success', { channel: ch, invite_code: code });
+      }
+
+      // If app takes focus, these fire → treat as success
+      document.addEventListener('visibilitychange', function(){ if(document.hidden){ markOpened(); } }, { once:true });
+      window.addEventListener('pagehide',  markOpened, { once:true });
+      window.addEventListener('blur',      markOpened, { once:true });
+
+      // Try open app NOW (platform-specific)
+      function openAppAuto(){
+        gtag('event','discord_deeplink_try', { channel: ch, invite_code: code, ua: ua.slice(0,60) });
+
+        if (isAndroid){
+          // Best for Chrome/most Android browsers
+          location.href = appAndroid;
+          return;
+        }
+
+        if (isIOS){
+          // Dual attempt: scheme via location + hidden iframe (some iOS versions need one or the other)
+          try { location.href = appIOS; } catch(e) {}
+          setTimeout(function(){
+            try {
+              var ifr = document.createElement('iframe');
+              ifr.style.display='none';
+              ifr.src = appIOS;
+              document.body.appendChild(ifr);
+              setTimeout(function(){ if (ifr && ifr.parentNode) ifr.parentNode.removeChild(ifr); }, 1500);
+            } catch(e){}
+          }, 80);
+          return;
+        }
+
+        // Desktop (Windows/macOS)
+        try { location.href = appDesktop; } catch(e) {}
+      }
+
+      openAppAuto();
+
+      // Fallback to web invite if the app didn't take over
+      var DELAY = isIOS ? 1400 : (isAndroid ? 1100 : 900);
+      if (inApp) DELAY = Math.max(DELAY, 1500); // many in-app browsers block deeplinks
+
+      setTimeout(function(){
+        if (!opened) {
+          gtag('event','discord_deeplink_fallback', { channel: ch, invite_code: code });
+          location.href = webInvite;
+        }
+      }, DELAY);
+
+      // Last-resort meta refresh (JS throttled cases)
+      var meta = document.createElement('meta');
+      meta.httpEquiv = 'refresh';
+      meta.content = '3;url=' + webInvite;
+      document.head.appendChild(meta);
+    })();
+  </script>
+
+  <!-- ===== Google Analytics 4 ===== -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-66GTK7C6VR"></script>
+  <script>
+    gtag('js', new Date());
+    gtag('config', 'G-66GTK7C6VR', { send_page_view: false, anonymize_ip: true });
+    gtag('event', 'page_view', {
+      page_title: document.title,
+      page_location: location.href,
+      page_path: location.pathname + location.search
+    });
+  </script>
+  <!-- ===== /GA4 ===== -->
+
+  <style>
+    :root { --bg:#0b0c10; --card:#121318; --text:#e6e6e6; --muted:#9aa0a6; --brand:#5865F2; --brand-2:#4752c4; }
+    * { box-sizing: border-box; }
+    html,body { height:100%; }
+    body {
+      margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      background: radial-gradient(1200px 600px at 80% -10%, rgba(88,101,242,.25), transparent 60%),
+                  radial-gradient(900px 500px at -10% 110%, rgba(64,78,237,.22), transparent 60%), var(--bg);
+      color:var(--text); display:flex; align-items:center; justify-content:center; padding:24px;
+    }
+    .card {
+      width:min(920px, 100%); background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.00)), var(--card);
+      border: 1px solid rgba(255,255,255,.08); border-radius:24px; box-shadow: 0 20px 60px rgba(0,0,0,.35);
+      padding: clamp(20px, 4vw, 40px); text-align:center;
+    }
+    h1 { font-size: clamp(24px, 3.2vw, 36px); margin:0 0 8px; letter-spacing:.2px; }
+    p.lead { margin: 0 0 16px; color: var(--muted); font-size: clamp(14px, 1.5vw, 16px); }
+    .btn {
+      appearance:none; border:none; border-radius:14px; padding:12px 16px; font-weight: 800; cursor:pointer;
+      background: var(--brand); color:white; text-decoration:none; display:inline-block;
+      transition: transform .04s ease, background .2s ease, box-shadow .2s ease;
+      box-shadow: 0 8px 24px rgba(88,101,242,.35);
+    }
+    .btn:hover { background: var(--brand-2); transform: translateY(-1px); }
+    .muted { color:var(--muted); font-size:13px; margin-top:12px; }
+    .code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; background: rgba(255,255,255,.06); padding:3px 6px; border-radius:6px; }
+  </style>
+</head>
+<body>
+  <!-- Fallback UI (shown briefly / if blocked) -->
+  <main class="card" role="main" aria-labelledby="title">
+    <h1 id="title">Opening Discord…</h1>
+    <p class="lead">If it doesn’t open automatically, use the button below.</p>
+    <p style="margin:12px 0 18px;">
+      <a id="open-now" class="btn" href="#" rel="nofollow noopener noreferrer">Open invite</a>
+    </p>
+    <p class="muted">Invite code: <span id="invite-code" class="code">—</span></p>
+    <p class="muted">This page auto-opens the app; falls back to the web invite.</p>
+  </main>
+
+  <script>
+    // Populate fallback UI & track manual click
+    (function(){
+      var code = window.__DISCORD_CODE__ || '4ZPePDs3Rs';
+      var web  = window.__DISCORD_WEB__  || ('https://discord.com/invite/' + code);
+
+      // Prefer app scheme on manual click too (browser will fall back if blocked)
+      var appLink = 'discord://-/invite/' + code;
+
+      var btn  = document.getElementById('open-now');
+      var span = document.getElementById('invite-code');
+      if (span) span.textContent = code;
+
+      if (btn){
+        btn.href = appLink;
+        btn.addEventListener('click', function(){
+          gtag('event','discord_manual_open', { invite_code: code });
+          setTimeout(function(){ try{ location.href = web; }catch(e){} }, 900);
+        });
+      }
+    })();
+  </script>
+
+  <noscript>
+    <meta http-equiv="refresh" content="0;url=https://discord.com/invite/4ZPePDs3Rs">
+    <div style="max-width:720px;margin:24px auto;color:#e6e6e6;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;">
+      JavaScript is disabled. Please open this invite:
+      <a href="https://discord.com/invite/4ZPePDs3Rs" rel="nofollow noopener noreferrer">https://discord.com/invite/4ZPePDs3Rs</a>.
+    </div>
+  </noscript>
+</body>
+</html>

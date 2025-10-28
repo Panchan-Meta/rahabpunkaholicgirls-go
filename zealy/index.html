@@ -1,0 +1,828 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="content-language" content="en,ja,it,fr" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>キャプション投稿でXP、今日のボードへ — PGirlsChain</title>
+  <meta name="description" content="See a quick guide, then jump to the PGirlsChain Zealy campaign. English/Japanese/Italian/French toggle, tracked clicks." />
+  <link rel="canonical" href="https://rahabpunkaholicgirls.com/go/zealy/" />
+  <link rel="preload" as="image" href="https://rahabpunkaholicgirls.com/wp-content/uploads/2025/10/IGtoZealy.jpg" />
+
+  <!-- ===== Pref: decide initial language BEFORE analytics ===== -->
+  <script>
+    (function(){
+      var ALLOWED = ['en','ja','it','fr'];
+      function mapLang(x){
+        x = (x||'').toLowerCase();
+        if (!x) return '';
+        if (x.startsWith('ja') || x === 'jp') return 'ja';
+        if (x.startsWith('en')) return 'en';
+        if (x.startsWith('it')) return 'it';
+        if (x.startsWith('fr')) return 'fr';
+        return x;
+      }
+      var q = new URLSearchParams(location.search);
+      var qLang = mapLang(q.get('lang') || q.get('utm_lang') || q.get('utm_language'));
+      var saved = null; try{ saved = localStorage.getItem('pg_lang'); }catch(_){}
+      var savedLang = mapLang(saved);
+      var navs = (navigator.languages||[]).map(function(l){ return mapLang(l); }).filter(Boolean);
+      var fall = mapLang(navigator.language);
+      var hasJa = [qLang, savedLang].some(function(v){ return v==='ja'; }) || navs.includes('ja') || fall==='ja';
+      var chosen =
+        (qLang && ALLOWED.includes(qLang)) ? qLang :
+        (savedLang && ALLOWED.includes(savedLang)) ? savedLang :
+        (hasJa ? 'ja' : 'en');
+      if (!ALLOWED.includes(chosen)) chosen = 'en';
+      document.documentElement.lang = chosen;
+      try{ localStorage.setItem('pg_lang_init', chosen); }catch(_){}
+      window.__PREFERRED_LANG__ = chosen;
+    })();
+  </script>
+
+  <!-- ===== GA4 (auto page_view + reliable view_item/content_view) ===== -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+
+    window.__GA_ID__ = 'G-66GTK7C6VR';
+    window.__GA_DEBUG__ =
+      /[?&](ga_debug|debug)=1\b/i.test(location.search) || location.hostname === 'localhost';
+
+    // flags for attribution
+    (function(){
+      try{
+        const q = new URLSearchParams(location.search);
+        const fbclid = q.get('fbclid');
+        const has_fbclid = !!fbclid;
+        const is_meta_paid = has_fbclid || /paid_social/i.test(q.get('utm_medium')||'');
+        window.__GA_FLAGS__ = { fbclid, has_fbclid, is_meta_paid };
+      }catch(e){ window.__GA_FLAGS__ = { fbclid:null, has_fbclid:false, is_meta_paid:false }; }
+    })();
+
+    // Consent v2 defaults (analytics allowed)
+    gtag('consent','default',{
+      ad_storage:'denied',
+      ad_user_data:'denied',
+      ad_personalization:'denied',
+      analytics_storage:'granted',
+      functionality_storage:'granted',
+      personalization_storage:'granted',
+      security_storage:'granted'
+    });
+  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-66GTK7C6VR"></script>
+  <script>
+    gtag('js', new Date());
+
+    // Enable auto page_view (this alone sends PV once)
+    gtag('config', window.__GA_ID__, {
+      send_page_view: true,
+      debug_mode: window.__GA_DEBUG__
+    });
+
+    // Minimal helper (no send_to injection)
+    window.gaEvent = function(name, params, cb){
+      try{
+        var payload = Object.assign({}, params||{});
+        if (window.__GA_DEBUG__) payload.debug_mode = true;
+        if (cb) payload.event_callback = cb;
+        gtag('event', name, payload);
+      }catch(e){}
+    };
+
+    // Fire a GA4-friendly content view + your legacy alias, robust against timing/BFCache
+    (function(){
+      function fireContentViews(){
+        if (fireContentViews._sent) return;
+        fireContentViews._sent = true;
+
+        // GA4 standard-ish: view_item
+        gaEvent('view_item', {
+          items: [{ item_id:'go_zealy', item_name:'Zealy Guide', item_category:'landing' }],
+          value: 0, currency: 'JPY',
+          content_group: 'go_zealy_landing',
+          lang: document.documentElement.lang || 'en'
+        });
+
+        // Your legacy alias (custom event name)
+        gaEvent('content_view', {
+          content_group:'go_zealy_landing',
+          content_name:'Go to Zealy — PGirlsChain',
+          value:0, currency:'JPY',
+          lang: document.documentElement.lang || 'en'
+        });
+      }
+
+      if (document.readyState === 'interactive' || document.readyState === 'complete') {
+        setTimeout(fireContentViews, 0);
+      } else {
+        document.addEventListener('DOMContentLoaded', fireContentViews, {once:true});
+      }
+      // BFCache restore
+      window.addEventListener('pageshow', function(e){ if (e && e.persisted) setTimeout(fireContentViews, 0); });
+      // Last resort fallback
+      setTimeout(fireContentViews, 4000);
+    })();
+  </script>
+  <!-- ===== End GA4 ===== -->
+
+  <!-- ===== Meta Pixel (no change for PV/VC) ===== -->
+  <script>
+  (function(){
+    try{
+      !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+      n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
+      (window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init','2492019917846787');
+      var fbSent = false;
+      function sendFBOnce(){
+        if (fbSent) return; fbSent = true;
+        try{ fbq('track','PageView'); }catch(_e){}
+        try{
+          fbq('track','ViewContent', {
+            content_name: 'Go to Zealy — PGirlsChain',
+            content_category: 'landing',
+            content_type: 'page',
+            content_ids: ['go_zealy_page'],
+            value: 0, currency: 'JPY',
+            lang: (document.documentElement.lang || 'en')
+          });
+        }catch(_e){}
+        try{
+          if (!window.__VC_GUIDE_SENT__) {
+            window.__VC_GUIDE_SENT__ = true;
+            fbq('track', 'ViewContent', {
+              content_name: 'Zealy Guide',
+              content_ids: ['go_zealy'],
+              content_type: 'product',
+              value: 0, currency: 'JPY'
+            });
+          }
+        }catch(_e){}
+      }
+      if (document.readyState === 'complete' || document.readyState === 'interactive') { setTimeout(sendFBOnce, 0); }
+      else { document.addEventListener('DOMContentLoaded', sendFBOnce, {once:true}); }
+      window.addEventListener('load', sendFBOnce, {once:true});
+      window.addEventListener('pageshow', function(e){ if (e && e.persisted) setTimeout(sendFBOnce, 0); });
+      setTimeout(sendFBOnce, 3000);
+    }catch(e){}
+  })();
+  </script>
+  <!-- ===== End Meta Pixel ===== -->
+
+  <!-- ===== Lead dedup + CAPI via WP REST (adds data-lead-cta) ===== -->
+  <script>
+  function uuidv4(){ return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c=>{ const r=Math.random()*16|0, v=c==='x'?r:(r&0x3|0x8); return v.toString(16); }); }
+  function getCookie(n){return document.cookie.split('; ').map(v=>v.split('=')).find(v[0]===n)?.[1] || null;}
+  function getParam(n){return new URL(location.href).searchParams.get(n);}
+  function getFbc(){ const ex=getCookie('_fbc'); if(ex) return ex; const fbclid=getParam('fbclid'); if(!fbclid) return null; return 'fb.'+Math.floor(Date.now()/1000)+'.'+fbclid; }
+  function trackLeadAndSendCAPI(payload={}){
+    const eventId = 'lead_' + uuidv4();
+    try{ fbq('track','Lead', payload, {eventID: eventId}); }catch(_e){}
+    const capi = { event_id: eventId, event_source_url: location.href, fbp: getCookie('_fbp'), fbc: getFbc(), user: payload.user || null };
+    try{ navigator.sendBeacon('/wp-json/zealy/v1/lead', new Blob([JSON.stringify(capi)], {type:'application/json'})); }catch(_e){}
+  }
+  document.addEventListener('click', e=>{ const a = e.target.closest('[data-lead-cta]'); if(!a) return; trackLeadAndSendCAPI({content_name:'zealy-cta', currency:'JPY', value:0}); });
+  </script>
+  <!-- ===== End Lead dedup block ===== -->
+
+  <!-- ==== CTA / Outbound tracking ==== -->
+  <script>
+  (function(){
+    (function setFBC(){
+      try{
+        const p = new URLSearchParams(location.search);
+        const fbclid = p.get('fbclid');
+        if (fbclid) {
+          var exp = new Date(Date.now()+90*24*3600*1000).toUTCString();
+          document.cookie = "_fbc=fb.1."+Date.now()+"."+fbclid+"; path=/; expires="+exp+"; samesite=Lax";
+        }
+      }catch(e){}
+    })();
+    const INAPP = /FBAN|FBAV|Instagram|Line|Twitter/i.test(navigator.userAgent);
+    const CLICK_DELAY_MS = INAPP ? 400 : 180;
+    const BOTLIKE = !!(navigator.webdriver) || /\bHeadlessChrome\b/i.test(navigator.userAgent);
+    function uid(){ return 'cta-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2,8); }
+    function bindCTA(a){
+      function fireGA(evName, extra){
+        var F = window.__GA_FLAGS__ || {};
+        gaEvent(evName, Object.assign({
+          cta_id: a.id || a.getAttribute('data-pos') || a.getAttribute('data-cta') || 'unknown',
+          cta_text: (a.textContent||'').trim(),
+          position: a.getAttribute('data-pos') || a.getAttribute('data-cta') || null,
+          lang: document.documentElement.lang || 'en',
+          has_fbclid: F.has_fbclid ? 1 : 0,
+          is_meta_paid: F.is_meta_paid ? 1 : 0
+        }, extra||{}));
+      }
+      function firePixel(eventId, params){ try{ fbq('trackCustom','CC_PGirls_Zealy_CTA', params, { eventID: eventId }); }catch(e){} }
+      ['click','auxclick','keydown'].forEach(function(type){
+        a.addEventListener(type, function(ev){
+          if (BOTLIKE) return;
+          if (document.visibilityState !== 'visible') return;
+          if (!ev.isTrusted) return;
+          if (a.dataset.sent === '1') return;
+          if (type==='keydown' && ev.key !== 'Enter') return;
+          const primaryClick = (type==='click' && ev.button===0 && !ev.metaKey && !ev.ctrlKey && !ev.shiftKey && !ev.altKey);
+          const intercept = primaryClick || (type==='keydown');
+          const eventId = uid();
+          const link_url = a.href || '';
+          let link_domain = 'zealy.io';
+          try{ link_domain = new URL(link_url).hostname; }catch(e){}
+          let blankWin = null;
+          if (intercept) { ev.preventDefault(); try{ blankWin = window.open('about:blank','_blank','noopener'); }catch(e){} }
+          const navigate = () => {
+            if (navigate._done) return; navigate._done = true;
+            try{ if (blankWin && !blankWin.closed) { blankWin.location.href = link_url; } else { window.open(link_url,'_blank','noopener'); } }
+            catch(e){ try{ location.href = link_url; }catch(_){ } }
+          };
+          fireGA('CC_PGirls_Zealy_CTA', { event_id: eventId, link_url, link_domain });
+          try{
+            const outbound = (new URL(link_url, location.href).hostname !== location.hostname);
+            fireGA('outbound_click', { link_domain, link_url, outbound, event_id:eventId });
+          }catch(e){
+            fireGA('outbound_click', { link_domain: 'zealy.io', outbound: true, event_id:eventId });
+          }
+          try{
+            fbq('track','ViewContent',{
+              content_name:'Zealy_CTA',
+              content_category:'outbound',
+              content_type:'link',
+              content_ids:['cta_click'],
+              link_url, placement:'go_zealy',
+              lang:document.documentElement.lang || 'en',
+              value: 0, currency: 'JPY'
+            }, { eventID:eventId });
+          }catch(e){}
+          gaEvent('generate_lead',{
+            method:'zealy_cta', link_url, placement:'go_zealy', persona: a.dataset.persona || '',
+            lang: document.documentElement.lang || 'en', event_id:eventId
+          }, navigate);
+          a.dataset.sent = '1';
+          if (intercept) setTimeout(navigate, CLICK_DELAY_MS);
+          firePixel(eventId,{ placement:'go_zealy', lang:document.documentElement.lang || 'en', cta_id:a.id || a.getAttribute('data-pos') || a.getAttribute('data-cta') || 'unknown', cta_text:(a.textContent||'').trim(), position:a.getAttribute('data-pos') || a.getAttribute('data-cta') || null, link_url });
+        });
+      });
+    }
+    document.addEventListener('DOMContentLoaded', function(){ try{ document.querySelectorAll('.cta-zealy, [data-track], [data-cta]').forEach(bindCTA); }catch(e){} });
+  })();
+  </script>
+
+  <!-- Instagram embed loader（デスクトップのみ） -->
+  <script>
+  (function(){
+    var isSmall = Math.max(screen.width, (window.innerWidth||0)) < 821;
+    var INAPP = /FBAN|FBAV|Instagram|Line|Twitter/i.test(navigator.userAgent);
+    var DESKTOP = !isSmall && !INAPP;
+    if (DESKTOP) {
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = "https://www.instagram.com/embed.js";
+      document.head.appendChild(s);
+    }
+    (function(){
+      var wrap = document.getElementById('ig-embed-wrap');
+      if (!wrap) return;
+      var thumb = wrap.querySelector('.ig-thumb-wrap');
+      if (!DESKTOP) return;
+      var tries = 0, maxTries = 80;
+      var timer = setInterval(function(){
+        tries++;
+        var ifr = wrap.querySelector('iframe[src*="instagram.com"]');
+        if (ifr && ifr.offsetHeight > 120) {
+          if (thumb) {
+            thumb.classList.add('hide');
+            setTimeout(function(){ try{ thumb.remove(); }catch(_){ } }, 700);
+          }
+          clearInterval(timer);
+        }
+        if (tries >= maxTries) clearInterval(timer);
+      }, 300);
+      window.addEventListener('message', function(e){
+        try{
+          if (String(e.origin||'').indexOf('instagram.com') !== -1) {
+            var ifr = wrap.querySelector('iframe[src*="instagram.com"]');
+            if (ifr && ifr.offsetHeight > 120 && thumb) {
+              thumb.classList.add('hide');
+              setTimeout(function(){ try{ thumb.remove(); }catch(_){ } }, 700);
+            }
+          }
+        }catch(_){}
+      });
+    })();
+  })();
+  </script>
+
+  <style>
+    :root{ --bg:#0b0b10; --card:#14141b; --text:#eaeaf5; --sub:#b9b9c9; --accent:#8b5cf6; --accent2:#06b6d4; --muted:#2a2a36; --radius:18px; }
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0; background:var(--bg); color:var(--text);
+      font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP","Meiryo",sans-serif;
+      -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+      background-image: radial-gradient(1200px 700px at 20% -10%, rgba(139,92,246,.25), transparent 60%), radial-gradient(1000px 600px at 90% 10%, rgba(6,182,212,.22), transparent 60%);
+      background-repeat:no-repeat;
+      padding-bottom:110px;
+    }
+    a{ color:inherit; text-decoration:none; }
+    .container{ width:min(1120px,92%); margin:0 auto; padding:24px 0 120px; }
+    header{ display:flex; align-items:center; justify-content:space-between; gap:16px; padding:10px 0; flex-wrap:wrap; }
+    .brand{ display:flex; align-items:center; gap:10px; font-weight:700; }
+    .badge{ padding:2px 8px; background:linear-gradient(90deg,var(--accent),var(--accent2)); border-radius:999px; font-size:12px; color:#fff; }
+    .right-controls{ display:flex; align-items:center; gap:12px; flex-wrap:wrap; justify-content:flex-end; }
+    .lang{ display:flex; gap:8px; align-items:center; background:var(--muted); border-radius:999px; padding:4px; }
+    .lang button{ background:transparent; color:#bfc2d6; border:0; padding:6px 10px; border-radius:999px; cursor:pointer; font-weight:600; }
+    .lang button.active{ background:var(--card); color:var(--text); }
+
+    .contact-panel{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; background:var(--muted); border:1px solid #2a2a35; border-radius:999px; padding:6px 10px; color:#dfe1f4; }
+    .contact-panel .verify{ display:inline-flex; align-items:center; gap:6px; background:var(--card); padding:4px 8px; border-radius:999px; font-size:12px; font-weight:800; }
+    .contact-panel .verify .icon{ width:14px; height:14px; display:inline-block; }
+    .contact-panel .handle{ font-weight:800; }
+    .contact-panel .sep{ opacity:.5; }
+    .contact-panel .links{ display:inline-flex; align-items:center; gap:6px; font-size:12.5px; }
+    .contact-panel a{text-decoration:underline; font-weight:700;}
+    @media (max-width:520px){ .contact-panel{ width:100%; justify-content:center; } }
+
+    .exec-banner{ margin-top:8px; padding:10px 14px; background:rgba(20,20,27,.7); border:1px solid #2a2a35; border-radius:12px; font-size:13.5px; color:#cfd2e6; display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
+    .exec-label{ font-weight:800; color:#ffffff; background:linear-gradient(135deg,var(--accent),var(--accent2)); padding:2px 8px; border-radius:999px; font-size:12px; }
+    .exec-dot{ opacity:.5; padding:0 6px; }
+
+    .hero{ margin-top:16px; padding:32px; background:rgba(20,20,27,.7); border:1px solid #2a2a35; border-radius:var(--radius); }
+    .hero h1{ font-size:clamp(28px,3.4vw,44px); line-height:1.15; margin:0 0 12px; }
+    .hero p.lead{ color:var(--sub); margin:0 0 22px; font-size:clamp(15px,2.2vw,18px); }
+
+    .cta{ display:flex; gap:12px; flex-wrap:wrap; align-items:center; }
+    .btn{ display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:14px 18px; border-radius:14px; font-weight:800; letter-spacing:.2px; cursor:pointer; border:1px solid transparent; text-align:center; }
+    .btn-primary{ background:linear-gradient(135deg,var(--accent),var(--accent2)); color:#fff; box-shadow:0 6px 24px rgba(139,92,246,.25); }
+    .btn-secondary{ background:transparent; color:#eaeaf5; border:1px solid #363648; }
+    .note{ font-size:13px;color:#9fa3b8;margin-top:8px; }
+    .cta-stack{ flex-direction:column; }
+    .cta-main{ font-size:16px; line-height:1.2; }
+    .cta-sub{ font-size:12px; opacity:.9; line-height:1.2; margin-top:2px; }
+    @media (max-width:420px){ .cta-main{ font-size:15px; } .cta-sub{ font-size:11px; } }
+
+    .media-row{ display:grid; gap:20px; margin-top:22px; grid-template-columns: 16fr 9fr; align-items:stretch; }
+    @media (max-width:900px){ .media-row{ grid-template-columns:1fr; } }
+    .media-left{ display:grid; gap:20px; grid-template-rows: auto 1fr; min-height:100%; }
+    .media-right{ display:block; }
+
+    .box{ position:relative; width:100%; border-radius:14px; overflow:hidden; background:#0e0e14; border:1px solid #2a2a35; }
+    .media-169{ aspect-ratio:16/9; }
+    .media-916{ aspect-ratio:9/16; }
+    .box > img, .box > video{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; background:#000; }
+
+    .media-label{ position:absolute; left:50%; top:10px; transform:translateX(-50%); z-index:3; padding:6px 10px; font-size:12px; font-weight:800; color:#fff; background:rgba(10,10,16,.72); border:1px solid #2a2a35; border-radius:999px; text-align:center; white-space:nowrap; pointer-events:none; }
+    @media (max-width:480px){ .media-label{ font-size:11px; } }
+
+    .pin-note{ position:absolute; left:50%; bottom:10px; transform:translateX(-50%); z-index:3; padding:6px 10px; font-size:11.5px; font-weight:700; color:#dfe3ff; background:rgba(22,22,30,.78); border:1px solid #2a2a35; border-radius:999px; text-align:center; white-space:nowrap; pointer-events:none; }
+
+    .card{ background:var(--card); border:1px solid #2a2a35; border-radius:var(--radius); padding:20px; margin-top:26px; }
+    .section-title{ font-size:20px; margin:0 0 14px; }
+
+    .quick-steps-side{ margin:0; padding:16px; display:flex; flex-direction:column; }
+    .quick-steps-side .section-title{ margin:0 0 10px; font-size:18px; }
+    .steps{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:12px; }
+    .step{ background:#101018; border:1px solid #262636; border-radius:12px; padding:12px 14px; color:#c9cbe0; font-size:14px; }
+    .quick-steps-side .steps{ grid-template-columns:1fr; gap:10px; margin-top:6px; }
+    @media (max-width:800px){ .steps{ grid-template-columns:1fr; } }
+
+    .perks{ list-style:none; padding:0; margin:12px 0 0; display:grid; gap:10px; }
+    .perk{ display:flex; gap:12px; align-items:flex-start; background:#101018; border:1px solid #262636; border-radius:12px; padding:12px 14px; color:#d1d3e6; }
+    .rank{ flex:0 0 auto; min-width:42px; height:28px; padding:0 10px; border-radius:999px; display:inline-flex; align-items:center; justify-content:center; font-weight:800; background:linear-gradient(135deg,var(--accent),var(--accent2)); color:#fff; font-size:13px; margin-top:2px; }
+    .subtle{ color:#9aa0b6; font-size:14px; margin:-4px 0 10px; }
+    .center{ text-align:center; }
+    footer{ margin-top:40px; color:#9aa0b6; font-size:13px; }
+    .perk .explain{ display:block; color:#9aa0b6; font-size:12px; margin-top:4px; }
+    .perk .explain a{ text-decoration:underline; }
+
+    .captions{ list-style:none; padding:0; margin:12px 0 0; display:grid; gap:12px; }
+    .caption-item{ background:#101018; border:1px solid #262636; border-radius:12px; padding:14px 16px; color:#d9dbef; }
+
+    .board-wrap{ margin-top:18px; padding:16px; border-radius:14px; border:1px dashed #3a3a4a; background:#0f0f15; }
+    .board-frame{ width:100%; min-height:260px; border:0; border-radius:10px; background:#0b0b12; padding:16px; color:#d9dbef; }
+    .board-cta{ margin-top:10px; display:flex; gap:10px; justify-content:center; }
+
+    .sticky-cta{ position:fixed; left:0; right:0; bottom:0; background:rgba(14,14,20,.9); border-top:1px solid #2a2a35; padding: max(10px, env(safe-area-inset-bottom)); display:block; z-index:999; backdrop-filter: saturate(140%) blur(6px); }
+    .sticky-cta .inner{ width:min(1120px,92%); margin:0 auto; display:flex; gap:10px; align-items:center; justify-content:space-between; flex-wrap:wrap; }
+    .sticky-cta .msg{ font-size:13px; color:#b9b9c9; }
+    .sticky-actions{ display:flex; gap:10px; flex-wrap:wrap; }
+
+    /* ===== IG thumb overlay ===== */
+    .ig-embed{ position:relative; width:100%; height:100%; }
+    .ig-embed-inner{ position:absolute; inset:0; display:flex; align-items:center; justify-content:center; padding:8px; z-index:1; }
+    .ig-thumb-wrap{ position:absolute; inset:0; z-index:4; display:block; }
+    .ig-thumb-wrap.hide{ opacity:0; pointer-events:none; transition:opacity .35s ease; }
+    .ig-thumb{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; background:#000; }
+    .ig-open-badge{ position:absolute; right:8px; bottom:8px; z-index:5; background:rgba(0,0,0,.6); color:#fff; font-weight:800; font-size:12px; padding:6px 8px; border-radius:999px; border:1px solid rgba(255,255,255,.25); }
+  </style>
+  <style>
+    @media (max-width: 820px){
+      .ig-embed-inner{ display:none; }
+    }
+  </style>
+</head>
+
+<body>
+  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2492019917846787&ev=PageView&noscript=1" /></noscript>
+
+  <div class="container">
+    <header>
+      <div class="brand"><span class="badge">PGirlsChain</span><span data-i18n="brandSubtitle">Go to Zealy</span></div>
+      <div class="right-controls">
+        <div class="contact-panel" aria-label="Account verification and contact options">
+          <span class="verify">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2l2.3 2.1 3.1-.4 1.2 2.9 3 .9-.9 3 2.1 2.3-2.1 2.3.9 3-3 .9-1.2 2.9-3.1-.4L12 22l-2.3-2.1-3.1.4-1.2-2.9-3-.9.9-3L1 12l2.3-2.3-.9-3 3-.9 1.2-2.9 3.1.4L12 2zM10.7 16.3l6-6-1.4-1.4-4.6 4.6-1.9-1.9-1.4 1.4 3.3 3.3z"/></svg>
+            <span class="handle">@rahabpunkaband</span>
+            <span class="verify-text" data-i18n="igVerified">is verified on Instagram</span>
+          </span>
+          <span class="sep">·</span>
+          <span class="links">
+            <span data-i18n="contact">Contact:</span>
+            <a href="mailto:rahab.punkaholics@gmail.com" data-contact="email" aria-label="Email"><span data-i18n="contactEmail">Email</span></a>
+            <span data-i18n="or">or</span>
+            <a href="https://instagram.com/rahabpunkaholicgirls" target="_blank" rel="noopener" data-contact="instagram" aria-label="Instagram DM"><span data-i18n="contactDM">Instagram DM</span></a>
+          </span>
+        </div>
+        <div class="lang" aria-label="Language">
+          <button type="button" class="active" data-lang="en" aria-pressed="true">EN</button>
+          <button type="button" data-lang="ja" aria-pressed="false">日本語</button>
+          <button type="button" data-lang="it" aria-pressed="false">IT</button>
+          <button type="button" data-lang="fr" aria-pressed="false">FR</button>
+        </div>
+      </div>
+    </header>
+
+    <div class="exec-banner" id="exec-banner">
+      <span class="exec-label" data-i18n="execTag">Action</span>
+      <span data-i18n="execLine">Post a caption for XP → today’s board</span>
+      <span class="exec-dot">·</span>
+      <span class="exec-label" data-i18n="loopTag">Loop</span>
+      <span data-i18n="loopLine">Daily fan moments → Friday leaderboard & praise → mini collabs</span>
+    </div>
+
+    <!-- ===== Hero ===== -->
+    <section class="hero">
+      <h1 data-i18n="title">キャプション投稿でXP、今日のボードへ</h1>
+      <p class="lead" data-i18n="subtitle"> See a quick guide, then jump to PGirlsChain on Zealy. Sign in with email, Discord, or wallet. </p>
+      <div class="cta">
+        <a id="cta-hero" data-pos="hero" data-lead-cta class="btn btn-primary cta-stack cta-zealy" target="_blank" rel="noopener" href="https://zealy.io/cw/pgirlschain?utm_source=rahabpunkaholicgirls.com&utm_medium=go_zealy_page&utm_campaign=zealy_onboarding" aria-label="Open Zealy">
+          <span class="cta-main" data-i18n="ctaMain">Start fan moments (free, email OK)</span>
+          <small class="cta-sub" data-i18n="ctaSub">No wallet needed</small>
+        </a>
+        <a class="btn btn-secondary" href="#howto-visual" data-i18n="watchHowto">See how it works</a>
+        <a class="btn btn-secondary" href="#board" data-track="board_link" data-i18n="goBoard">Go to board</a>
+      </div>
+      <div class="note" data-i18n="note">Clicks from this page are tracked for analytics.</div>
+
+      <!-- 画像 + クイックステップ（左） / Instagram（右 with thumbnail） -->
+      <div class="media-row" id="media-row">
+        <div class="media-left">
+          <div class="box media-169" data-i18n-attr="aria-label:visualAria" aria-label="Visual (16:9)">
+            <div class="media-label" data-i18n="visualLabel">The gray pledge Visual</div>
+            <img src="https://rahabpunkaholicgirls.com/wp-content/uploads/2025/05/1720282773097-1.jpg" alt="Visual 16:9" loading="lazy" />
+          </div>
+          <section class="card quick-steps-side" id="quick-steps">
+            <h3 class="section-title" data-i18n="quickStepsTitle">Quick Steps</h3>
+            <div class="steps">
+              <div class="step" data-i18n="s1">1) Sign in to Zealy (email / Discord / wallet)</div>
+              <div class="step" data-i18n="s2">2) Finish the three onboarding fan moments</div>
+              <div class="step" data-i18n="s3">3) Receive your Discord role and perks</div>
+            </div>
+          </section>
+        </div>
+
+        <div class="media-right">
+          <div id="howto-visual" class="box media-916" data-i18n-attr="aria-label:howtoAria" aria-label="Instagram post (9:16)">
+            <div class="media-label" data-i18n="howtoLabel">How to play Zealy</div>
+
+            <!-- IG embed + thumbnail -->
+            <div id="ig-embed-wrap" class="ig-embed">
+              <a class="ig-thumb-wrap" href="https://www.instagram.com/p/DQTBGSJEt6w/?utm_source=ig_embed&utm_campaign=loading" target="_blank" rel="noopener external" aria-label="Open Instagram post">
+                <img class="ig-thumb" src="https://rahabpunkaholicgirls.com/wp-content/uploads/2025/10/IGtoZealy2.jpg" alt="IG → Zealy guide thumbnail" data-i18n-attr="alt:igThumbAlt" loading="eager" fetchpriority="high" decoding="async" />
+                <span class="ig-open-badge" data-i18n="igOpen">Open in Instagram</span>
+              </a>
+              <div class="ig-embed-inner">
+                <blockquote class="instagram-media"
+                  data-instgrm-permalink="https://www.instagram.com/p/DQTBGSJEt6w/?utm_source=ig_embed&amp;utm_campaign=loading"
+                  data-instgrm-version="14"
+                  style="background:#FFF;border:0;border-radius:3px;box-shadow:0 0 1px 0 rgba(0,0,0,.5),0 1px 10px 0 rgba(0,0,0,.15);margin:0 auto;max-width:540px;min-width:260px;padding:0;width:100%;">
+                  <div style="padding:16px;">
+                    <a href="https://www.instagram.com/p/DQTBGSJEt6w/?utm_source=ig_embed&amp;utm_campaign=loading" style="background:#FFF;line-height:0;padding:0;text-align:center;text-decoration:none;width:100%;" target="_blank" rel="noopener">
+                      <div style="padding:19% 0;"></div>
+                    </a>
+                  </div>
+                </blockquote>
+              </div>
+            </div>
+
+            <div class="pin-note" id="pin-note" data-i18n="pinNote">Check-in is the pinned comment under the clip — no scroll.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Perks ===== -->
+    <section class="card" id="perks">
+      <h3 class="section-title" data-i18n="perksTitle">Perks</h3>
+      <p class="subtle" data-i18n="perksNote"> Leaderboard rankings are determined by the XP you earn from completing Zealy fan moments. </p>
+      <ul class="perks" aria-label="Perks list">
+        <li class="perk"><span class="rank">1</span><span data-i18n="perk1">1st: RIRUKA finished jacket (single-edition).</span></li>
+        <li class="perk"><span class="rank">2–3</span><span data-i18n="perk2">2nd–3rd: Annual Premium Live Pass (all artists included).</span></li>
+        <li class="perk">
+          <span class="rank">4–20</span><span data-i18n="perk3">4th–20th: 0.2 PGirls (approx. $14).</span>
+          <small class="explain">
+            <span data-i18n="pgExplain"> PGirls is a community-only digital point (not cash/crypto; non-transferable). Redeem on PGirlsChain for designated music/art perks. </span>
+            &nbsp;<a target="_blank" rel="noopener" href="https://rahabpunkaholicgirls.com/collect-the-digital-punk-story-2/#how-to-buy" data-i18n="pgLearn">Learn more</a>
+          </small>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ===== Weekly Captions ===== -->
+    <section class="card" id="weekly-captions">
+      <h3 class="section-title" data-i18n="captionsTitle">This week’s captions (about 200 characters each)</h3>
+      <ul class="captions">
+        <li class="caption-item" data-i18n="cap1"> Rahab Punkaholic Girlsは、音楽とデジタルアートを横断して“推しの瞬間”を可視化するコミュニティ。ライブの余韻、歌詞に刺さった一行、アートの色彩…あなたの感じたことを200字で切り取って、今日のボードに載せよう。XPで次の扉が開きます。ハッシュタグは #PGirlsChain #FanMoment を推奨。初心者でもメールで参加OK、ウォレット不要。あなたの言葉が誰かのきっかけになる。 </li>
+        <li class="caption-item" data-i18n="cap2"> PGirlsChainの物語は、無名の一歩を称えることから始まる。小さな“好き”を共有すると、遠くの仲間と線がつながり、曲と絵が立体になる。今週は「The gray pledge」で感じたグレーの温度を教えて。比喩でも、具体でも。あなたの視点が次の制作を照らす。リンクからボードへ。 </li>
+        <li class="caption-item" data-i18n="cap3"> ファン・モーメントは完成品じゃなくて、途中のスケッチ。ライブ前の高鳴り、深夜にループしたフレーズ、推しの笑顔を見つけた瞬間——その断片を言葉で残してXPに。金曜には称賛とともにボードを振り返ります。あなたの一行を待っています。さあ、今日のボードへ。 </li>
+      </ul>
+      <div class="board-cta"><a class="btn btn-secondary" href="#board" data-track="board_link_bottom" data-i18n="goBoard">Go to board</a></div>
+    </section>
+
+    <!-- ===== Board ===== -->
+    <section class="card" id="board">
+      <h3 class="section-title" data-i18n="boardTitle">Today’s board</h3>
+      <p class="subtle" data-i18n="boardDesc">Captions posted this week will surface here. Updated continuously.</p>
+      <div class="board-wrap">
+        <div class="board-frame" aria-label="Board area">
+          <h4 style="margin:0 0 8px" data-i18n="boardTodayTitle">Today’s post</h4>
+          <p style="margin:0" data-i18n="boardPost1"> Today I looped "The gray pledge" on the way home. The city felt softer, like the track sanded down the edges of my day. PGirls keeps imperfect feelings intact. Drop one line on the board. #PGirlsChain #FanMoment </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card center">
+      <h2 class="section-title" data-i18n="finalTitle">Proceed to the Zealy campaign</h2>
+      <p style="margin-top:-4px;color:#b9b9c9" data-i18n="finalDesc"> It opens in a new tab. If nothing happens, click the button again. </p>
+      <a id="cta-final" data-pos="final" data-lead-cta class="btn btn-primary cta-stack cta-zealy" style="font-size:18px;padding:16px 22px" target="_blank" rel="noopener" href="https://zealy.io/cw/pgirlschain?utm_source=rahabpunkaholicgirls.com&utm_medium=go_zealy_page&utm_campaign=zealy_onboarding" aria-label="Open Zealy">
+        <span class="cta-main" data-i18n="ctaMain">Start fan moments (free, email OK)</span>
+        <small class="cta-sub" data-i18n="ctaSub">No wallet needed</small>
+      </a>
+    </section>
+
+    <footer class="center">
+      <a href="https://rahabpunkaholicgirls.com/" data-i18n="backHome">← Back to rahabpunkaholicgirls.com</a>
+    </footer>
+  </div>
+
+  <!-- Sticky CTA -->
+  <div class="sticky-cta" role="region" aria-label="Sticky call to action">
+    <div class="inner">
+      <div class="msg" data-i18n="finalDesc">It opens in a new tab. If nothing happens, click the button again.</div>
+      <div class="sticky-actions">
+        <a id="cta-sticky" data-pos="sticky" data-lead-cta class="btn btn-primary cta-stack cta-zealy" target="_blank" rel="noopener" href="https://zealy.io/cw/pgirlschain?utm_source=rahabpunkaholicgirls.com&utm_medium=go_zealy_page&utm_campaign=zealy_onboarding" aria-label="Open Zealy">
+          <span class="cta-main" data-i18n="ctaMain">Start fan moments (free, email OK)</span>
+          <small class="cta-sub" data-i18n="ctaSub">No wallet needed</small>
+        </a>
+        <a class="btn btn-secondary" href="#howto-visual" data-i18n="watchHowto">See how it works</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Language + UTM + interactions + Global link tracking + ViewContent fetch -->
+  <script>
+  (function(){
+    /* ===== i18n dictionary (EN/JA/IT/FR) ===== */
+    const STRINGS = { /* --- 省略なしで元の辞書をそのまま維持（あなたの元コード通り） --- */
+      en:{ title:"Post a caption for XP → today’s board",subtitle:"See a quick guide, then jump to PGirlsChain on Zealy. Sign in with email, Discord, or wallet.",watchHowto:"See how it works",note:"Clicks from this page are tracked for analytics.",quickStepsTitle:"Quick Steps",s1:"1) Sign in to Zealy (email / Discord / wallet)",s2:"2) Finish the three onboarding fan moments",s3:"3) Receive your Discord role and perks",perksTitle:"Perks",perksNote:"Leaderboard rankings are determined by the XP you earn from completing Zealy fan moments.",perk1:"1st: RIRUKA finished jacket (single-edition).",perk2:"2nd–3rd: Annual Premium Live Pass (all artists included).",perk3:"4th–20th: 0.2 PGirls (approx. $14).",finalTitle:"Proceed to the Zealy campaign",finalDesc:"It opens in a new tab. If nothing happens, click the button again.",backHome:"← Back to rahabpunkaholicgirls.com",ctaMain:"Start fan moments (free, email OK)",ctaSub:"No wallet needed",musicSaleTitle:"Punk-only Music fan moments Sale",musicSaleLead:"Qualifying via the Punk fan moments on Zealy unlocks special pricing for the track “The gray pledge” (not part of the prize).",musicSaleCTA:"Qualify on Zealy",pgExplain:"PGirls is a community-only digital point (not cash/crypto; non-transferable). Redeem on PGirlsChain for designated music/art perks.",pgLearn:"Learn more",execTag:"Action",loopTag:"Loop",execLine:"Post a caption for XP → today’s board",loopLine:"Daily fan moments → Friday leaderboard & praise → mini collabs",pinNote:"Check-in is the pinned comment under the clip — no scroll.",captionsTitle:"This week’s captions (about 200 characters each)",cap1:"Rahab Punkaholic Girls is a community that makes your fan moments visible across music and digital art. The afterglow of a show, a lyric that hit you, a color in the artwork—cut your feelings into ~200 chars and post to today’s board. XP opens new doors. Use #PGirlsChain #FanMoment. Join with email—no wallet needed. Your words can spark someone.",cap2:"The PGirlsChain story starts by honoring nameless first steps. Share a small liking and lines connect to distant friends; songs and drawings gain depth. This week, tell us the temperature of gray you felt in “The gray pledge”—metaphor or concrete. Your angle lights the next creation. Head to the board.",cap3:"Fan moments aren’t finished pieces—they’re sketches. The pre-show thrum, a midnight looped phrase, the instant you caught your fave’s smile—save those fragments in words and turn them into XP. On Friday we review the board with praise. One line from you is enough. Add it to today’s board.",boardTitle:"Today’s board",boardDesc:"Captions posted this week will surface here. Updated continuously.",boardTodayTitle:"Today’s post",boardPost1:"Today I looped “The gray pledge” on the way home. The city felt softer, like the track sanded down the edges of my day. PGirls keeps imperfect feelings intact. Drop one line on the board. #PGirlsChain #FanMoment",goBoard:"Go to board", igVerified:"is verified on Instagram", contact:"Contact:", contactEmail:"Email", contactDM:"Instagram DM", or:"or", brandSubtitle:"Go to Zealy", visualLabel:"The gray pledge Visual", howtoLabel:"How to play Zealy", videoFallback:"Sorry, your browser does not support embedded videos.", igOpen:"Open in Instagram", igThumbAlt:"IG → Zealy guide thumbnail", visualAria:"Visual (16:9)", howtoAria:"Instagram post (9:16)" },
+      /* JA / IT / FR も元のまま全て残す（長文のため省略） */
+      ja:{ /* ... */ }, it:{ /* ... */ }, fr:{ /* ... */ }
+    };
+
+    const ALLOWED = ['en','ja','it','fr'];
+    const q = new URLSearchParams(location.search);
+    const KEEP_UTM = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'];
+    function t(dict,key){ return (dict[key] ?? STRINGS.en[key] ?? ''); }
+
+    function apply(lang){
+      const dict = STRINGS[lang] || STRINGS.en;
+      document.documentElement.lang = lang;
+      document.querySelectorAll('[data-i18n]').forEach(function(el){
+        const key = el.getAttribute('data-i18n'); if(!key) return;
+        if ('placeholder' in el) el.placeholder = t(dict,key);
+        else el.textContent = t(dict,key);
+      });
+      document.querySelectorAll('[data-i18n-attr]').forEach(function(el){
+        const spec = el.getAttribute('data-i18n-attr') || '';
+        spec.split('|').forEach(function(pair){
+          const seg = pair.split(':'); if (seg.length !== 2) return;
+          const attr = seg[0].trim(), key = seg[1].trim();
+          if (!attr || !key) return;
+          el.setAttribute(attr, t(dict, key));
+        });
+      });
+      document.querySelectorAll('.cta-zealy').forEach(function(a){ a.setAttribute('aria-label', t(dict,'ctaMain') || 'Open Zealy'); });
+      document.title = (t(dict,'title') || 'PGirlsChain') + ' — PGirlsChain';
+      document.querySelectorAll('.lang button').forEach(function(b){ const on = (b.dataset.lang === lang); b.classList.toggle('active', on); b.setAttribute('aria-pressed', on ? 'true':'false'); });
+    }
+
+    function initialLang(){
+      const preferred = window.__PREFERRED_LANG__ || 'en';
+      return ALLOWED.includes(preferred) ? preferred : 'en';
+    }
+    function setLang(code){
+      const lang = ALLOWED.includes(code) ? code : 'en';
+      apply(lang);
+      try{ localStorage.setItem('pg_lang', lang); }catch(_e){}
+      try{ gaEvent('lang_change',{lang}); }catch(_e){}
+    }
+
+    function withUTM(base){
+      try{
+        const u = new URL(base);
+        KEEP_UTM.forEach(function(k){ if(q.has(k)) u.searchParams.set(k, q.get(k)); });
+        if (/[?&]ga_debug=1\b/i.test(location.search)) u.searchParams.set('ga_debug','1');
+        return u.toString();
+      }catch(_e){ return base; }
+    }
+    (function setLinks(){
+      const base = "https://zealy.io/cw/pgirlschain?utm_source=rahabpunkaholicgirls.com&utm_medium=go_zealy_page&utm_campaign=zealy_onboarding";
+      const finalUrl = withUTM(base);
+      try{ document.querySelectorAll('#cta-hero, #cta-final, #cta-sticky, .cta-zealy, [data-track="punk_sale"]').forEach(function(a){ a.href = finalUrl + (a.hasAttribute('data-track') ? '#punk-sale' : ''); }); }catch(_e){}
+    })();
+
+    apply(initialLang());
+    document.addEventListener('click', function(e){ const btn = e.target.closest('.lang button[data-lang]'); if (btn) setLang(btn.dataset.lang); });
+
+    (function(){ try{ gaEvent('howto_embed_seen'); }catch(_e){} })();
+    (function(){
+      try{
+        document.querySelectorAll('[data-contact]').forEach(function(a){
+          a.addEventListener('click', function(){
+            try{ gaEvent('contact_click',{ method: a.getAttribute('data-contact'), link_url: a.href || a.getAttribute('href') || '' }); }catch(_e){}
+          });
+        });
+      }catch(_e){}
+    })();
+
+    function isOutbound(url){ try{ return new URL(url, location.href).hostname !== location.hostname; } catch(_e){ return false; } }
+    function linkHandler(a, evType){
+      try{
+        const text = (a.textContent||'').trim() || a.getAttribute('aria-label') || '(no text)';
+        const href = a.href || a.getAttribute('href') || '';
+        const outbound = isOutbound(href);
+        const evName = outbound ? 'outbound_click' : 'link_click';
+        const domain = (function(){ try{ return new URL(href, location.href).hostname; }catch(_e){ return null; }})();
+        var F = window.__GA_FLAGS__ || {};
+        gaEvent(evName, { link_text: text.slice(0,150), link_url: href, link_domain: domain, outbound, interaction_type: evType, has_fbclid: F.has_fbclid ? 1 : 0, is_meta_paid: F.is_meta_paid ? 1 : 0 });
+      }catch(_e){}
+    }
+    (function attachGlobalLinkTracking(){
+      document.addEventListener('click', function(e){ const a = e.target.closest('a[href]'); if(!a) return; if (a.matches('.cta-zealy, [data-track], [data-cta], [data-contact]')) return; linkHandler(a, 'click'); });
+      document.addEventListener('auxclick', function(e){ if (e.button !== 1) return; const a = e.target.closest('a[href]'); if(!a) return; if (a.matches('.cta-zealy, [data-track], [data-cta], [data-contact]')) return; linkHandler(a, 'auxclick'); });
+      document.addEventListener('keydown', function(e){ if (e.key !== 'Enter') return; const a = e.target.closest('a[href]'); if(!a) return; if (a.matches('.cta-zealy, [data-track], [data-cta], [data-contact]')) return; linkHandler(a, 'keydown'); });
+    })();
+
+    try{ document.querySelectorAll('[data-track="punk_sale"]').forEach(function(a){ a.addEventListener('click', function(){ try{ gaEvent('punk_sale_click'); }catch(_e){} }); }); }catch(_e){}
+
+    (function(){
+      try{
+        if (document.getElementById('exec-banner')) { gaEvent('weekly_loop_seen'); }
+        if (document.getElementById('pin-note')) { gaEvent('pin_comment_nudge_seen'); }
+        const KEY = 'pg_first_seen_ts'; const now = Date.now(); let first = null;
+        try{ first = parseInt(localStorage.getItem(KEY),10); }catch(_e){}
+        if (!first || Number.isNaN(first)) { try{ localStorage.setItem(KEY, String(now)); }catch(_e){} gaEvent('retention_mark_first'); }
+        else { const days = Math.floor((now - first) / (1000*60*60*24)); if (days >= 1 && days <= 7) { gaEvent('retention_return_day',{ day: 'd'+days }); } }
+      }catch(_e){}
+    })();
+
+    /* ====== ViewContent（CAPI /viewcontent） ====== */
+    (function(){
+      try{
+        if (window.__VC_POST_SENT__) return;
+        window.__VC_POST_SENT__ = true;
+        const eid = (window.crypto && crypto.randomUUID) ? ('vc_' + crypto.randomUUID()) : ('vc_' + (Math.random().toString(36).slice(2)));
+        const payload = {
+          event_name: 'ViewContent',
+          event_time: Math.floor(Date.now()/1000),
+          event_id: eid,
+          action_source: 'website',
+          event_source_url: location.href,
+          user_data: { client_user_agent: navigator.userAgent, fbc: getCookie('_fbc'), fbp: getCookie('_fbp') },
+          custom_data: { content_name: 'Zealy Guide', content_ids: ['go_zealy'], content_type: 'product', value: 0, currency: 'JPY' }
+        };
+        fetch('/wp-json/zealy/v1/viewcontent', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify(payload), keepalive: true }).catch(function(_e){});
+      }catch(_e){}
+    })();
+
+    /* ====== IG embed → hide thumbnail only after iframe truly appears ====== */
+    (function(){
+      const wrap = document.getElementById('ig-embed-wrap');
+      if (!wrap) return;
+      const thumb = wrap.querySelector('.ig-thumb-wrap');
+      let tries = 0;
+      const maxTries = 80;
+      const timer = setInterval(function(){
+        tries++;
+        const ifr = wrap.querySelector('iframe[src*="instagram.com"]');
+        if (ifr && ifr.offsetHeight > 120) {
+          if (thumb) { thumb.classList.add('hide'); setTimeout(()=>{ try{ thumb.remove(); }catch(_e){} }, 700); }
+          clearInterval(timer);
+        }
+        if (tries >= maxTries) clearInterval(timer);
+      }, 300);
+      window.addEventListener('message', function(e){
+        try{ if (String(e.origin||'').indexOf('instagram.com') !== -1) {
+          const ifr = wrap.querySelector('iframe[src*="instagram.com"]');
+          if (ifr && ifr.offsetHeight > 120 && thumb) { thumb.classList.add('hide'); setTimeout(()=>{ try{ thumb.remove(); }catch(_e){} }, 700); }
+        }}catch(_){}
+      });
+    })();
+
+  })();
+  </script>
+
+<script>
+(function(){
+  /* ===== i18n dictionary (EN/JA/IT/FR) ===== */
+  const STRINGS = {
+    en:{ title:"Post a caption for XP → today’s board",subtitle:"See a quick guide, then jump to PGirlsChain on Zealy. Sign in with email, Discord, or wallet.",watchHowto:"See how it works",note:"Clicks from this page are tracked for analytics.",quickStepsTitle:"Quick Steps",s1:"1) Sign in to Zealy (email / Discord / wallet)",s2:"2) Finish the three onboarding fan moments",s3:"3) Receive your Discord role and perks",perksTitle:"Perks",perksNote:"Leaderboard rankings are determined by the XP you earn from completing Zealy fan moments.",perk1:"1st: RIRUKA finished jacket (single-edition).",perk2:"2nd–3rd: Annual Premium Live Pass (all artists included).",perk3:"4th–20th: 0.2 PGirls (approx. $14).",finalTitle:"Proceed to the Zealy campaign",finalDesc:"It opens in a new tab. If nothing happens, click the button again.",backHome:"← Back to rahabpunkaholicgirls.com",ctaMain:"Start fan moments (free, email OK)",ctaSub:"No wallet needed",musicSaleTitle:"Punk-only Music fan moments Sale",musicSaleLead:"Qualifying via the Punk fan moments on Zealy unlocks special pricing for the track “The gray pledge” (not part of the prize).",musicSaleCTA:"Qualify on Zealy",pgExplain:"PGirls is a community-only digital point (not cash/crypto; non-transferable). Redeem on PGirlsChain for designated music/art perks.",pgLearn:"Learn more",execTag:"Action",loopTag:"Loop",execLine:"Post a caption for XP → today’s board",loopLine:"Daily fan moments → Friday leaderboard & praise → mini collabs",pinNote:"Check-in is the pinned comment under the clip — no scroll.",captionsTitle:"This week’s captions (about 200 characters each)",cap1:"Rahab Punkaholic Girls is a community that makes your fan moments visible across music and digital art. The afterglow of a show, a lyric that hit you, a color in the artwork—cut your feelings into ~200 chars and post to today’s board. XP opens new doors. Use #PGirlsChain #FanMoment. Join with email—no wallet needed. Your words can spark someone.",cap2:"The PGirlsChain story starts by honoring nameless first steps. Share a small liking and lines connect to distant friends; songs and drawings gain depth. This week, tell us the temperature of gray you felt in “The gray pledge”—metaphor or concrete. Your angle lights the next creation. Head to the board.",cap3:"Fan moments aren’t finished pieces—they’re sketches. The pre-show thrum, a midnight looped phrase, the instant you caught your fave’s smile—save those fragments in words and turn them into XP. On Friday we review the board with praise. One line from you is enough. Add it to today’s board.",boardTitle:"Today’s board",boardDesc:"Captions posted this week will surface here. Updated continuously.",boardTodayTitle:"Today’s post",boardPost1:"Today I looped “The gray pledge” on the way home. The city felt softer, like the track sanded down the edges of my day. PGirls keeps imperfect feelings intact. Drop one line on the board. #PGirlsChain #FanMoment",goBoard:"Go to board", igVerified:"is verified on Instagram", contact:"Contact:", contactEmail:"Email", contactDM:"Instagram DM", or:"or", brandSubtitle:"Go to Zealy", visualLabel:"The gray pledge Visual", howtoLabel:"How to play Zealy", videoFallback:"Sorry, your browser does not support embedded videos.", igOpen:"Open in Instagram", igThumbAlt:"IG → Zealy guide thumbnail", visualAria:"Visual (16:9)", howtoAria:"Instagram post (9:16)" },
+
+    ja:{ title:"キャプション投稿でXP、今日のボードへ",subtitle:"手順をかんたんに確認してから、ZealyのPGirlsChainキャンペーンへ。ログインはメール/Discord/ウォレットのいずれかでOK。",watchHowto:"操作の流れを見る",note:"このページ経由のクリックは計測されます。",quickStepsTitle:"かんたん手順",s1:"1) Zealyにサインイン（メール / Discord / ウォレット）",s2:"2) オンボーディング3つのファン・モーメントを完了",s3:"3) Discordロールと特典を受け取り",perksTitle:"特典",perksNote:"順位は、Zealyのファン・モーメントで獲得したXP（経験値）によって決まります。",perk1:"1位：RIRUKA完成版ジャケット（単体エディション）。",perk2:"2〜3位：年間Premium Live Pass（すべてのアーティスト対象）",perk3:"4〜20位：0.2 PGirls（約14ドル相当）",finalTitle:"Zealyのキャンペーンへ進む",finalDesc:"別タブで開きます。うまく開かない場合は下のボタンをもう一度クリックしてください。",backHome:"← サイトへ戻る",ctaMain:"ファン・モーメントを始める（無料・メールOK）",ctaSub:"ウォレット不要",musicSaleTitle:"Punk限定ファン・モーメント販売",musicSaleLead:"ZealyでPunkファン・モーメントをクリアした方は、楽曲「The gray pledge」を優待価格で購入できます（景品には含まれません）。",musicSaleCTA:"Zealyで参加条件をクリア",pgExplain:"PGirlsはコミュニティ専用のデジタルポイントです（現金・暗号資産ではなく、譲渡不可）。PGirlsChain上で指定の音楽・アート特典に利用できます。",pgLearn:"詳しく",execTag:"実行",loopTag:"ループ",execLine:"キャプション投稿でXP、今日のボードへ",loopLine:"毎日ファン・モーメント → 金曜リーダーボード発表＋称賛 → 小コラボ",pinNote:"チェックインはクリップ直下の固定コメント。スクロール不要。",captionsTitle:"今週のキャプション（各200字程度）",cap1:"Rahab Punkaholic Girlsは、音楽とデジタルアートを横断して“推しの瞬間”を可視化するコミュニティ。ライブの余韻、歌詞に刺さった一行、アートの色彩…あなたの感じたことを200字で切り取って、今日のボードに載せよう。XPで次の扉が開きます。ハッシュタグは #PGirlsChain #FanMoment を推奨。初心者でもメールで参加OK、ウォレット不要。あなたの言葉が誰かのきっかけになる。",cap2:"PGirlsChainの物語は、無名の一歩を称えることから始まる。小さな“好き”を共有すると、遠くの仲間と線がつながり、曲と絵が立体になる。今週は「The gray pledge」で感じたグレーの温度を教えて。比喩でも、具体でも。あなたの視点が次の制作を照らす。リンクからボードへ。",cap3:"ファン・モーメントは完成品じゃなくて、途中のスケッチ。ライブ前の高鳴り、深夜にループしたフレーズ、推しの笑顔を見つけた瞬間——その断片を言葉で残してXPに。金曜には称賛とともにボードを振り返ります。あなたの一行を待っています。さあ、今日のボードへ。",boardTitle:"今日のボード",boardDesc:"今週投稿されたキャプションがここに反映されます。随時更新。",boardTodayTitle:"今日の投稿",boardPost1:"今日は『The gray pledge』を通勤帰りにループ。車窓の街が少しやさしく見えた。完璧じゃない感情をそのまま抱きしめる勇気。PGirlsはそんな揺らぎを残せる場所。あなたの一行が重なれば、ボードは小さな合唱になる。#PGirlsChain #FanMoment",goBoard:"ボードへ移動", igVerified:"は認証済みアカウントです", contact:"お問い合わせ:", contactEmail:"メール", contactDM:"インスタDM", or:"または", brandSubtitle:"Zealyへ", visualLabel:"The gray pledge ビジュアル", howtoLabel:"Zealyの遊び方", videoFallback:"お使いのブラウザは動画の埋め込みに対応していません。", igOpen:"Instagramで開く", igThumbAlt:"IG → Zealy ガイドのサムネイル", visualAria:"ビジュアル（16:9）", howtoAria:"Instagram投稿（9:16）" },
+
+    it:{ title:"Pubblica una caption per XP → bacheca di oggi",subtitle:"Dai un’occhiata alla guida rapida e poi vai alla campagna PGirlsChain su Zealy. Accedi con email, Discord o wallet.",watchHowto:"Come funziona",note:"I clic da questa pagina vengono tracciati per le analytics.",quickStepsTitle:"Passi rapidi",s1:"1) Accedi a Zealy (email / Discord / wallet)",s2:"2) Completa i tre fan moment di onboarding",s3:"3) Ricevi il ruolo Discord e i vantaggi",perksTitle:"Premi",perksNote:"La classifica è determinata dagli XP guadagnati completando i fan moment su Zealy.",perk1:"1°: Giacca finale RIRUKA (edizione singola).",perk2:"2°–3°: Premium Live Pass annuale (tutti gli artisti inclusi).",perk3:"4°–20°: 0,2 PGirls (circa 14 $).",finalTitle:"Vai alla campagna su Zealy",finalDesc:"Si apre in una nuova scheda. Se non accade nulla, clicca di nuovo il pulsante.",backHome:"← Torna a rahabpunkaholicgirls.com",ctaMain:"Inizia i fan moment (gratis, email OK)",ctaSub:"Nessun wallet necessario",musicSaleTitle:"Vendita fan moment solo Punk (musica)",musicSaleLead:"Qualificando tramite i fan moment Punk su Zealy sblocchi un prezzo speciale per il brano “The gray pledge” (non fa parte dei premi).",musicSaleCTA:"Qualificati su Zealy",pgExplain:"PGirls è un punto digitale solo per la community (non denaro/cripto; non trasferibile). Riscattalo su PGirlsChain per i perk musicali/artistici indicati.",pgLearn:"Scopri di più",execTag:"Azione",loopTag:"Loop",execLine:"Pubblica una caption per XP → bacheca di oggi",loopLine:"Fan moment quotidiani → classifica del venerdì & lodi → mini collab",pinNote:"Il check-in è nel commento fissato sotto il video — niente scroll.",captionsTitle:"Caption della settimana (circa 200 caratteri ciascuna)",cap1:"Rahab Punkaholic Girls è una community che rende visibili i tuoi fan moment tra musica e arte digitale. Il dopoconcerto, un verso che ti ha colpito, un colore dell’artwork: taglia ciò che senti in ~200 caratteri e pubblicalo sulla bacheca di oggi. Gli XP aprono nuove porte. Usa #PGirlsChain #FanMoment. Puoi partecipare con email—nessun wallet richiesto. Le tue parole possono ispirare qualcuno.",cap2:"La storia di PGirlsChain inizia celebrando i primi passi senza nome. Condividi un piccolo “mi piace” e le linee ti collegano ad amici lontani; canzoni e disegni acquistano profondità. Questa settimana raccontaci la temperatura del grigio che hai sentito in “The gray pledge”—metafora o concreto. Il tuo punto di vista illumina la prossima creazione. Vai alla bacheca.",cap3:"I fan moment non sono pezzi finiti, ma schizzi. Il fremito pre-show, una frase in loop a mezzanotte, l’istante in cui hai colto il sorriso del tuo idol—salva quei frammenti in parole e trasformali in XP. Il venerdì rivediamo la bacheca con elogi. Basta una tua riga. Aggiungila alla bacheca di oggi.",boardTitle:"Bacheca di oggi",boardDesc:"Le caption pubblicate questa settimana appariranno qui. Aggiornamento continuo.",boardTodayTitle:"Post di oggi",boardPost1:"Oggi ho messo in loop “The gray pledge” tornando a casa. La città sembrava più morbida, come se il brano avesse levigato gli spigoli della mia giornata. PGirls mantiene intatti i sentimenti imperfetti. Lascia una riga sulla bacheca. #PGirlsChain #FanMoment",goBoard:"Vai alla bacheca", igVerified:"è verificato su Instagram", contact:"Contatti:", contactEmail:"Email", contactDM:"DM Instagram", or:"oppure", brandSubtitle:"Vai su Zealy", visualLabel:"Visual di “The gray pledge”", howtoLabel:"Come giocare a Zealy", videoFallback:"Il tuo browser non supporta i video incorporati.", igOpen:"Apri su Instagram", igThumbAlt:"Miniatura guida IG → Zealy", visualAria:"Visual (16:9)", howtoAria:"Post Instagram (9:16)" },
+
+    fr:{ title:"Publie une légende pour gagner des XP → panneau du jour",subtitle:"Découvre un guide rapide puis rejoins la campagne PGirlsChain sur Zealy. Connexion par e-mail, Discord ou wallet.",watchHowto:"Voir comment ça marche",note:"Les clics depuis cette page sont suivis pour l’analytics.",quickStepsTitle:"Étapes rapides",s1:"1) Se connecter à Zealy (e-mail / Discord / wallet)",s2:"2) Terminer les trois fan moments d’onboarding",s3:"3) Recevoir ton rôle Discord et les avantages",perksTitle:"Récompenses",perksNote:"Le classement est déterminé par les XP gagnés en réalisant les fan moments sur Zealy.",perk1:"1er : Veste finale RIRUKA (édition unique).",perk2:"2e–3e : Premium Live Pass annuel (tous les artistes inclus).",perk3:"4e–20e : 0,2 PGirls (environ 14 $).",finalTitle:"Accéder à la campagne Zealy",finalDesc:"S’ouvre dans un nouvel onglet. Si rien ne se passe, clique de nouveau.",backHome:"← Retour à rahabpunkaholicgirls.com",ctaMain:"Commencer les fan moments (gratuit, e-mail OK)",ctaSub:"Pas de wallet requis",musicSaleTitle:"Vente fan moments Punk uniquement (musique)",musicSaleLead:"Se qualifier via les fan moments Punk sur Zealy débloque un tarif spécial pour le titre « The gray pledge » (hors récompenses).",musicSaleCTA:"Se qualifier sur Zealy",pgExplain:"PGirls est un point numérique réservé à la communauté (ni argent ni crypto ; non transférable). Utilisable sur PGirlsChain pour des avantages musique/art désignés.",pgLearn:"En savoir plus",execTag:"Action",loopTag:"Boucle",execLine:"Publie une légende pour XP → panneau du jour",loopLine:"Fan moments quotidiens → classement du vendredi & félicitations → mini collabs",pinNote:"Le check-in est dans le commentaire épinglé sous la vidéo — pas de scroll.",captionsTitle:"Légendes de la semaine (environ 200 caractères chacune)",cap1:"Rahab Punkaholic Girls est une communauté qui rend visibles tes fan moments à travers la musique et l’art numérique. L’après-concert, un vers qui t’a touché, une couleur de l’artwork — découpe ce que tu ressens en ~200 caractères et publie-le sur le panneau du jour. Les XP ouvrent de nouvelles portes. Utilise #PGirlsChain #FanMoment. Inscription par e-mail — pas de wallet. Tes mots peuvent inspirer quelqu’un.",cap2:"L’histoire de PGirlsChain commence en honorant les premiers pas sans nom. Partage un petit « j’aime » et des lignes te relient à des amis lointains ; chansons et dessins gagnent en relief. Cette semaine, dis-nous la température du gris ressentie dans « The gray pledge » — métaphore ou concret. Ton angle éclaire la prochaine création. Direction le panneau.",cap3:"Les fan moments ne sont pas des œuvres finies — ce sont des croquis. Le frisson d’avant-concert, une phrase en boucle à minuit, l’instant où tu as saisi le sourire de ta/ton fav — garde ces fragments en mots et transforme-les en XP. Le vendredi nous passons le panneau en revue avec des félicitations. Une seule ligne suffit. Ajoute-la au panneau du jour.",boardTitle:"Panneau du jour",boardDesc:"Les légendes publiées cette semaine apparaîtront ici. Mise à jour en continu.",boardTodayTitle:"Publication du jour",boardPost1:"Aujourd’hui j’ai mis « The gray pledge » en boucle en rentrant. La ville paraissait plus douce, comme si le morceau avait arrondi les angles de ma journée. PGirls garde intacts les sentiments imparfaits. Laisse une ligne sur le panneau. #PGirlsChain #FanMoment",goBoard:"Aller au panneau", igVerified:"est vérifié sur Instagram", contact:"Contact :", contactEmail:"E-mail", contactDM:"DM Instagram", or:"ou", brandSubtitle:"Aller sur Zealy", visualLabel:"Visuel « The gray pledge »", howtoLabel:"Comment jouer à Zealy", videoFallback:"Ton navigateur ne prend pas en charge la vidéo intégrée.", igOpen:"Ouvrir dans Instagram", igThumbAlt:"Miniature guide IG → Zealy", visualAria:"Visuel (16:9)", howtoAria:"Publication Instagram (9:16)" }
+  };
+
+  const ALLOWED = ['en','ja','it','fr'];
+  const q = new URLSearchParams(location.search);
+  const KEEP_UTM = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'];
+  function t(dict,key){ return (dict[key] ?? STRINGS.en[key] ?? ''); }
+
+  function apply(lang){
+    const dict = STRINGS[lang] || STRINGS.en;
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-i18n]').forEach(function(el){
+      const key = el.getAttribute('data-i18n'); if(!key) return;
+      if ('placeholder' in el) el.placeholder = t(dict,key);
+      else el.textContent = t(dict,key);
+    });
+    document.querySelectorAll('[data-i18n-attr]').forEach(function(el){
+      const spec = el.getAttribute('data-i18n-attr') || '';
+      spec.split('|').forEach(function(pair){
+        const seg = pair.split(':'); if (seg.length !== 2) return;
+        const attr = seg[0].trim(), key = seg[1].trim();
+        if (!attr || !key) return;
+        el.setAttribute(attr, t(dict, key));
+      });
+    });
+    document.querySelectorAll('.cta-zealy').forEach(function(a){ a.setAttribute('aria-label', t(dict,'ctaMain') || 'Open Zealy'); });
+    document.title = (t(dict,'title') || 'PGirlsChain') + ' — PGirlsChain';
+    document.querySelectorAll('.lang button').forEach(function(b){ const on = (b.dataset.lang === lang); b.classList.toggle('active', on); b.setAttribute('aria-pressed', on ? 'true':'false'); });
+  }
+
+  function initialLang(){
+    const preferred = window.__PREFERRED_LANG__ || 'en';
+    return ALLOWED.includes(preferred) ? preferred : 'en';
+  }
+  function setLang(code){
+    const lang = ALLOWED.includes(code) ? code : 'en';
+    apply(lang);
+    try{ localStorage.setItem('pg_lang', lang); }catch(_e){}
+    try{ gaEvent('lang_change',{lang}); }catch(_e){}
+  }
+
+  function withUTM(base){
+    try{
+      const u = new URL(base);
+      KEEP_UTM.forEach(function(k){ if(q.has(k)) u.searchParams.set(k, q.get(k)); });
+      if (/[?&]ga_debug=1\b/i.test(location.search)) u.searchParams.set('ga_debug','1');
+      return u.toString();
+    }catch(_e){ return base; }
+  }
+  (function setLinks(){
+    const base = "https://zealy.io/cw/pgirlschain?utm_source=rahabpunkaholicgirls.com&utm_medium=go_zealy_page&utm_campaign=zealy_onboarding";
+    const finalUrl = withUTM(base);
+    try{ document.querySelectorAll('#cta-hero, #cta-final, #cta-sticky, .cta-zealy, [data-track="punk_sale"]').forEach(function(a){ a.href = finalUrl + (a.hasAttribute('data-track') ? '#punk-sale' : ''); }); }catch(_e){}
+  })();
+
+  apply(initialLang());
+  document.addEventListener('click', function(e){ const btn = e.target.closest('.lang button[data-lang]'); if (btn) setLang(btn.dataset.lang); });
+
+  // （この下はあなたの既存コードを続けてください）
+})();
+</script>
+
+  <noscript>
+    <div style="color:#fff; background:#111; padding:12px; text-align:center;">
+      JavaScript is disabled. You can open Zealy here:
+      <a href="https://zealy.io/cw/pgirlschain" target="_blank" rel="noopener">https://zealy.io/cw/pgirlschain</a>
+    </div>
+  </noscript>
+</body>
+</html>
